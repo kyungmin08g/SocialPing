@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialPing</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        header {
+            margin-top: 34px;
+            display: flex;
+            height: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 190px;
+        }
+
+        #logo h2 a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #socialping-logo {
+            width: 34px;
+            height: 34px;
+            margin-right: 10px;
+        }
+
+        #title {
+            font-size: 22px;
+        }
+
+        #links {
+            display: flex;
+            justify-content: center;
+        }
+
+        #links a {
+            text-decoration: none;
+            color: black;
+        }
+
+        li {
+            list-style-type: none;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        #login-button {
+            margin-left: 330px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: #A986EF;
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+            box-shadow: 0px 0px 5px #A986EF;
+        }
+
+        #login-button:hover {
+            cursor: pointer;
+            background-color: #9277c7;
+            transition-property: all;
+            transition-duration: 0.5s;
+            transition-timing-function: ease;
+        }
+
+        /* ----------------------------------- */
+
+        #content1 {
+            margin-top: 200px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #sub-content1 {
+            margin-right: 260px;
+            margin-top: 80px;
+        }
+
+        #logo2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 355px;
+            margin-bottom: 15px;
+        }
+
+        #logo2 h2 a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #socialping-logo2 {
+            width: 33px;
+            height: 33px;
+            margin-right: 10px;
+        }
+
+        #title2 {
+            font-size: 23px;
+        }
+
+        #main-title {
+            margin-bottom: 12px;
+            font-size: 40px;
+        }
+
+        #sub-title {
+            margin-bottom: 40px;
+        }
+
+        #start-button {
+            padding-left: 42px;
+            padding-right: 42px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: #A986EF;
+            color: white;
+            font-weight: 500;
+            font-size: 16px;
+            box-shadow: 0px 0px 5px #A986EF;
+        }
+
+        #start-button:hover {
+            cursor: pointer;
+            background-color: #9277c7;
+            transition-property: all;
+            transition-duration: 0.5s;
+            transition-timing-function: ease;
+        }
+
+        /* -------------------------------------- */
+
+        #content2-main {
+            margin-top: 180px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #content2 {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        #use-examples {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .example-class {
+            margin-top: 42px;
+        }
+
+        #use-examples #example {
+            background-color: #F5F5F5;
+            padding: 12px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-right: 20px;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        #use-examples #example div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2D2D2D;
+        }
+
+        #frame {
+            margin-right: 10px;
+            width: 14px;
+            height: 14px;
+            padding-bottom: 2px;
+        }
+
+        #frist-link {
+            text-align: center;
+            color: #646464;
+        }
+
+        #frist-link-title {
+            font-size: 24px;
+        }
+
+        #frist-link p span {
+            color: #A986EF;
+            font-weight: 600;
+        }
+
+        #description1 {
+            margin-top: 32px;
+        }
+
+        #description2 {
+            margin-top: 20px;
+        }
+
+        /* ---------------------------------------- */
+
+        #content3 {
+            margin-top: 160px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 200px;
+        }
+
+        #core {
+            font-size: 24px;
+        }
+
+        #function {
+            font-size: 28px;
+            color: #A986EF;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        #card-menus {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #auto {
+            width: 80px;
+            height: 80px;
+        }
+
+        #comment {
+            width: 80px;
+            height: 80px;
+        }
+
+        #keywording {
+            width: 80px;
+            height: 80px;
+        }
+
+        #card-menus div {
+            background-color: #F5F5F5;
+            padding: 24px;
+            padding-left: 32px;
+            padding-right: 32px;
+            margin-left: 26px;
+            margin-right: 26px;
+            border-radius: 20px;
+        }
+
+        #description3 {
+            margin-top: 10px;
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #3F3F3F;
+        }
+
+        #description4 {
+            font-size: 15px;
+            color: #3F3F3F;
+        }
+
+        #description5 {
+            margin-top: 10px;
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #3F3F3F;
+        }
+
+        #description6 {
+            font-size: 15px;
+            color: #3F3F3F;
+        }
+
+        #description7 {
+            margin-top: 10px;
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #3F3F3F;
+        }
+
+        #description8 {
+            font-size: 15px;
+            color: #3F3F3F;
+        }
+
+        /* ------------------------------------------- */
+
+        #content4 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 200px;
+        }
+
+        #feature-description {
+            margin-right: 206px;
+        }
+
+        #feature-description span {
+            color: #A986EF;
+            font-weight: 600;
+        }
+
+        #characteristics {
+            font-size: 28px;
+            color: #A986EF;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        #feature-description1 {
+            color: #646464;
+        }
+
+        #feature-card-view-completion1 {
+            background-color: #A986EF;
+            padding: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        #free {
+            margin-right: 24px;
+        }
+
+        #description9 {
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        #description10 {
+            color: white;
+            font-size: 14px;
+        }
+
+        #feature-card-view-completion2 {
+            background-color: #F5F5F5;
+            padding: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+        }
+
+        #dm {
+            width: 70px;
+            height: 70px;
+            margin-right: 24px;
+        }
+
+        #description11 {
+            color: #3F3F3F;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        #description12 {
+            color: #3F3F3F;
+            font-size: 14px;
+        }
+
+        /* -------------------------------------- */
+
+        #content5 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 200px;
+        }
+
+        #principle-operation {
+            margin-right: 250px;
+        }
+
+        #operation-principle {
+            color: black;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        #operation-principle span {
+            font-size: 28px;
+            color: #A986EF;
+            font-weight: 600;
+        }
+
+        #content5-card-view1 {
+            background-color: #F5F5F5;
+            padding: 32px;
+            border-radius: 15px;
+            margin-bottom: 24px;
+        }
+
+        #emphasis {
+            color: #A986EF;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        #shipping-terms {
+            font-weight: 400;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #3F3F3F;
+        }
+
+        #supplementary-explanation {
+            color: #646464;
+            font-size: 15px;
+        }
+
+        #content5-card-view2 {
+            background-color: #F5F5F5;
+            padding: 32px;
+            border-radius: 15px;
+        }
+
+        #supplementary-explanation-description {
+            color: #A986EF;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        #various div {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+        }
+
+        #various p {
+            color: #3F3F3F;
+            font-size: 15px;
+        }
+
+        #various span {
+            color: #A986EF;
+            font-weight: 600;
+        }
+
+        #various img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        /* ------------------------------------ */
+
+        #footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #939393;
+            margin-left: 1130px;
+            margin-bottom: 10px;
+        }
+
+        #footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #939393;
+            margin-left: 860px;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        #copyright {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            color: #939393;
+            margin-right: 20px;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        #questions {
+            color: #939393;
+            font-size: 15px;
+            margin-right: 840px;
+            margin-bottom: 12px;
+        }
+
+        #copyright-title {
+            color: #939393;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        #footer-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="/static/Logo.png" alt="SocialPing-Logo" id="socialping-logo">
+            <h2 id="title"><a href="">SocialPing.com</a></h2>
+        </div>
+        <div id="links">
+            <li><a href="">SocialPing이란 무엇인가</a></li>
+            <li><a href="">핵심기능</a></li>
+            <li><a href="">특징</a></li>
+            <li><a href="">작동원리</a></li>
+            <li><a href="">게시판</a></li>
+        </div>
+        <button id="login-button">로그인</button>
+    </header>
+
+    <div id="content1">
+        <div id="sub-content1">
+            <div id="logo2">
+                <img src="/static/Logo.png" alt="SocialPing-Logo" id="socialping-logo2">
+                <h2 id="title2"><a href="">SocialPing.com</a></h2>
+            </div>
+            <h1 id="main-title">DM 발송을 자동화하는 간단한 방법</h1>
+            <p id="sub-title">DM 발송을 자동화하여 시간을 절약해보세요!</p>
+            <button id="start-button">시작하기</button>
+        </div>
+        <div>
+            <img src="/static/free-icon-message-4144781.png" alt="SocialPing-Logo2" id="socialping-logo3">
+        </div>
+    </div>
+
+    <div id="content2-main">
+        <div id="content2">
+            <div id="sub-content2">
+                <div id="frist-link">
+                    <p id="frist-link-title"><span>SocialPing</span> 이란 무엇인가</p>
+                    <p id="description1">SocialPing은 <span>DM</span> 발송을 자동화하여 사용자에게 편리함을 주고자 개발된 웹 <br>사이트입니다.</p>
+                    <p id="description2">“DM”은 무슨 뜻인가요? Direct Message의 약자로 특정 인물, 내가 원하는 어떤 인<br>물에게 직접 메일이나 문자, SNS로 연락을 취하는것을 의미합니다.</p>
+                </div>
+
+                <div id="use-examples">
+                    <div id="example" class="example-class">
+                        <div>
+                            <img src="/static/Frame 90.png" alt="" id="frame">
+                            <p>DM 발송 자동화를 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div id="example" class="example-class">
+                        <div>
+                            <img src="/static/Frame 90.png" alt="" id="frame">
+                            <p>발송 조건을 추가할 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div id="example" class="example-class">
+                        <div>
+                            <img src="/static/Frame 90.png" alt="" id="frame">
+                            <p>대댓글 달기 기능이 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="use-examples">
+                    <div id="example">
+                        <div>
+                            <img src="/static/Frame 90.png" alt="" id="frame">
+                            <p>무료 요금제 때문에 마음이 편안합니다.</p>
+                        </div>
+                    </div>
+                    <div id="example">
+                        <div>
+                            <img src="/static/Frame 90.png" alt="" id="frame">
+                            <p>DM 발송 자동화 기능을 비즈니스 용도로 사용합니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content3">
+        <div id="content3-main">
+            <div id="content3-title">
+                <p id="core">핵심</p>
+                <p id="function">기능</p>
+            </div>
+            <div id="card-menus">
+                <div>
+                    <img src="/static/auto.png" alt="" id="auto">
+                    <p id="description3">DM 발송 자동화</p>
+                    <p id="description4">DM 발송을 자동화하여 사용자에게 편리함을 제공합니<br>다. 비즈니스 용도로 많이 사용됩니다.</p>
+                </div>
+                <div>
+                    <img src="/static/comment.png" alt="" id="comment">
+                    <p id="description5">대댓글 달기</p>
+                    <p id="description6">DM이 아니라 댓글에 답글을 달 수 있는 기능을 제공합니<br>다.</p>
+                </div>
+                <div>
+                    <img src="/static/keywording.png" alt="" id="keywording">
+                    <p id="description7">키워드 필터링</p>
+                    <p id="description8">키워드를 필터링하여 내가 원하는 댓글에 DM이나 대댓<br>글을 달 수 있는 기능을 제공합니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content4">
+        <div id="feature-description">
+            <p id="characteristics">특징</p>
+            <p id="feature-description1">이 서비스는 특별한 것이 아닙니다. 이미 다른 회사들이 우리와 똑같은 서비<br>스를 가지고 있습니다. 하지만 그럼에도 불구하고 이 서비스가 특별한이유<br>는 <span>무료</span>라는 점입니다. 타 회사들의 서비스는 거의 구독제입니다. <br><br>구독제가 좋은 이유는 당연하게도 수익일겁니다. 하지만 이 서비스는 무료 <br>요금제로 지갑 걱정할 필요 없이 마음껏 사용하실 수 있습니다.</p>
+        </div>
+
+        <div id="feature-card-view">
+            <div id="feature-card-view-completion1">
+                <img src="/static/free.png" alt="" id="free">
+                <div id="feature-card-description1">
+                    <p id="description9">사용자는 평생 무료 요금제로 지갑 걱정할 필요 없어집니다.</p>
+                    <p id="description10">이 서비스의 특징 중 하나는 무료로 서비스를 사용할 수 있게 무료 요금제를 제공한다. 이를 <br>통해 사용자는 마음 놓고 편안히 서비스를 이용할 수 있게된다.</p>
+                </div>
+            </div>
+
+            <div id="feature-card-view-completion2">
+                <img src="/static/dm.png" alt="" id="dm">
+                <div id="feature-card-description2">
+                    <p id="description11">DM 발송을 자동화하여 사용자의 시간을 절약해줍니다.</p>
+                    <p id="description12">비즈니스 용도로 사용한다면 이 서비스는 최고의 선택일 것이다. 게시물이나 릴스에 달린 <br>댓글에 일일히 확인하고 답글이나 DM을 보낼 필요없이 이 서비스를 이용해 DM 발송을 <br>자동화하여 사용자에게 편리함을 제공해준다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content5">
+        <div id="principle-operation">
+            <p id="operation-principle"><span>작동</span>원리</p>
+            <div id="content5-card-menus">
+                <div id="content5-card-view1">
+                    <p id="emphasis">1 단계</p>
+                    <p id="shipping-terms">발성 조건을 추가하세요.</p>
+                    <p id="supplementary-explanation">우선 페이스북으로 로그인하여 페이스북 페이지와 연결하세요. 발송 조건을 추가<br>하여 사용자가 원하는 조건으로 DM이나 대댓글이 달릴 수 있도록 하세요.</p>
+                </div>
+
+                <div id="content5-card-view2">
+                    <p id="emphasis">2 단계</p>
+                    <p id="shipping-terms">DM 발송을 자동화하세요.</p>
+                    <p id="supplementary-explanation">발송 조건을 설정하고 확인 버튼을 누르세요. 그러면 발송 자동화가 설정되어서 어떤 <br>영상이나 게시물에 댓글이 달리면 DM이나 대댓글을 자동으로 달라줄겁니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="content5-supplementary-explanation">
+            <p id="supplementary-explanation-description">지원하는 발송 조건:</p>
+            <div id="various">
+                <div>
+                    <img src="/static/instagram.png" alt="" id="instr-icon">
+                    <p><span>게시물 또는 릴스 중 선택</span>할 수 있습니다. 게시물이나 릴스에 댓글이 달리면 <br>DM을 발송하거나 대댓글을 쓸 수 있습니다.</p>
+                </div>
+                <div>
+                    <img src="/static/filtering.png" alt="" id="Filtering-icon">
+                    <p><span>키워드 필터링</span>을 설정할 수 있습니다. 자신이 원하는 키워드를 설정하여 게시물<br>이나 릴스에 그 키워드가 있는 댓글이 달릴 경우에만 DM이나 대댓글을 <br>발송합니다.</p>
+                </div>
+                <div>
+                    <img src="/static/follow-us.png" alt="" id="follow-icon">
+                    <p><span>팔로우 또는 논팔로우</span>를 설정할 수 있습니다. 팔로우를 한 사람이 게시물이<br>나 릴스에 댓글을 달면 DM이나 대댓글을 자동으로 발송해줍니다.</p>
+                </div>
+                <div>
+                    <img src="/static/send.png" alt="" id="paper-plane-icon">
+                    <p><span>DM 또는 대댓글 설정</span>을 할 수 있습니다. DM으로 발송할건지 대댓글로 발<br>송할건지 설정할 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div id="footer-div">
+            <div>
+                <div id="footer-logo">
+                    <img src="/static/Logo.png" alt="SocialPing-Logo" id="socialping-logo">
+                    <h2 id="footer-title">SocialPing.com</h2>
+                </div>
+                <div id="footer-links">
+                    <li>SocialPing이란 무엇인가</li>
+                    <li>핵심기능</li>
+                    <li>특징</li>
+                    <li>작동원리</li>
+                    <li>게시판</li>
+                </div>
+                <div id="copyright">
+                    <p id="questions">문의사항: kyungmin2892@gmail.com</p>
+                    <p id="copyright-title">SocialPing.com © 2025 모든 권리 보유</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
