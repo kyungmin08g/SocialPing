@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialPing - 회원가입</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        header {
+            margin-top: 34px;
+            display: flex;
+            height: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 190px;
+        }
+
+        #logo h2 a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #socialping-logo {
+            width: 34px;
+            height: 34px;
+            margin-right: 10px;
+        }
+
+        #title {
+            font-size: 22px;
+        }
+
+        #links {
+            display: flex;
+            justify-content: center;
+        }
+
+        #links a {
+            text-decoration: none;
+            color: black;
+            background-color: #ffffff;
+            color: white;
+        }
+
+        li {
+            list-style-type: none;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        #login-button {
+            margin-left: 330px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: #ffffff;
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        /* ------------------------------------ */
+
+        #content {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        #signup-box {
+            background-color: #F5F5F5;
+            padding: 30px;
+            border-radius: 15px;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 54%);
+        }
+
+        #signup-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        #signup-form div p {
+            color: #A6A6A6;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        #signup-form div input {
+            margin-bottom: 20px;
+            width: 400px;
+            height: 34px;
+            border-radius: 10px;
+            border: none;
+            padding-left: 12px;
+            font-size: 14px;
+            outline: #A986EF;
+        }
+
+        #signup-form div input:focus {
+            outline: 1px solid #A986EF;
+            box-shadow: 0px 0px 5px #A986EF;
+        }
+
+        #signup-form div select {
+            width: 414px;
+            height: 34px;
+            border-radius: 10px;
+            border: none;
+            padding-left: 12px;
+            margin-bottom: 80px;
+            font-size: 14px;
+            outline: #A986EF;
+        }
+
+        #signup-form div select:focus {
+            outline: 1px solid #A986EF;
+            box-shadow: 0px 0px 5px #A986EF;
+        }
+
+        #signup-btn-box {
+            text-align: center;
+        }
+
+        #signup-btn {
+            background-color: #A986EF;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            padding-left: 28px;
+            padding-right: 28px;
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        #signup-btn:hover {
+            cursor: pointer;
+            background-color: #9277c7;
+            transition-property: all;
+            transition-duration: 0.5s;
+            transition-timing-function: ease;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="images/Logo.png" alt="SocialPing-Logo" id="socialping-logo">
+            <h2 id="title"><a href="">SocialPing.com</a></h2>
+        </div>
+        <div id="links">
+            <li><a href="">SocialPing이란 무엇인가</a></li>
+            <li><a href="">핵심기능</a></li>
+            <li><a href="">특징</a></li>
+            <li><a href="">작동원리</a></li>
+            <li><a href="">게시판</a></li>
+        </div>
+        <p id="login-button">로그인</p>
+    </header>
+
+    <div id="content">
+        <div id="signup-box">
+            <h2 id="signup-title">회원가입</h2>
+            <form action="" method="get" id="signup-form">
+                <div>
+                    <p>(필수) 이메일</p>
+                    <input type="email" placeholder="이메일을 입력해주세요." required>
+                </div>
+                <div>
+                    <p>전화번호</p>
+                    <input type="text" placeholder="전화번호를 입력해주세요.">
+                </div>
+                <div>
+                    <p>업종</p>
+                    <select id="options">
+                        <option id="option1">기타</option>
+                        <option id="option2">개발</option>
+                        <option id="option3">UI/UX</option>
+                        <option id="option4">사업가</option>
+                        <option id="option5">마케팅</option>
+                    </select>
+                </div>
+                <div id="signup-btn-box">
+                    <button id="signup-btn">회원가입</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
