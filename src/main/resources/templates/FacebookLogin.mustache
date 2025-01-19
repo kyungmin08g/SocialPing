@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialPing - 페이스북 로그인</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        header {
+            margin-top: 34px;
+            display: flex;
+            height: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 190px;
+        }
+
+        #logo h2 a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #socialping-logo {
+            width: 34px;
+            height: 34px;
+            margin-right: 10px;
+        }
+
+        #title {
+            font-size: 22px;
+        }
+
+        #links {
+            display: flex;
+            justify-content: center;
+        }
+
+        #links a {
+            text-decoration: none;
+            color: black;
+            background-color: #ffffff;
+            color: white;
+        }
+
+        li {
+            list-style-type: none;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        #login-button {
+            margin-left: 330px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: #ffffff;
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        /* ---------------------------------------- */
+
+        #content {
+            margin-top: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #facebook-login-btn {
+            margin-top: 26px;
+            color: white;
+            background-color: #1877F2;
+            border: none;
+            padding: 8px;
+            padding-left: 18px;
+            padding-right: 18px;
+            border-radius: 10px;
+
+            font-size: 15.5px;
+        }
+
+        #facebook-login-btn div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #facebook-login-btn:hover {
+            cursor: pointer;
+            background-color: #136ee3;
+            transition-property: all;
+            transition-duration: 0.5s;
+            transition-timing-function: ease;
+        }
+
+        #facebook-logo {
+            width: 32px;
+            height: 32px;
+            margin-right: 20px;
+        }
+
+        #arrow {
+            width: 30px;
+            height: 30px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="images/Logo.png" alt="SocialPing-Logo" id="socialping-logo">
+            <h2 id="title"><a href="">SocialPing.com</a></h2>
+        </div>
+        <div id="links">
+            <li><a href="">SocialPing이란 무엇인가</a></li>
+            <li><a href="">핵심기능</a></li>
+            <li><a href="">특징</a></li>
+            <li><a href="">작동원리</a></li>
+            <li><a href="">게시판</a></li>
+        </div>
+        <p id="login-button">로그인</p>
+    </header>
+
+    <div id="content">
+        <div>
+            <h1 id="login-title">인스타그램 메신저의 새로운 고객 경험을<br> SocialPing에서 만나보세요.</h1>
+            <button id="facebook-login-btn">
+                <div>
+                    <img src="/static/facebook-logo.png" alt="" id="facebook-logo">
+                    페이스북으로 로그인하기
+                    <img src="/static/arrow.png" alt="" id="arrow">
+                </div>
+            </button>
+        </div>
+    </div>
+</body>
+</html>
