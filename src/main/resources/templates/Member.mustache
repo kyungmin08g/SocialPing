@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialPing - 회원정보</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        header {
+            margin-top: 34px;
+            display: flex;
+            height: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        #logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 190px;
+        }
+
+        #logo h2 a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #socialping-logo {
+            width: 34px;
+            height: 34px;
+            margin-right: 10px;
+        }
+
+        #title {
+            font-size: 22px;
+        }
+
+        #links {
+            display: flex;
+            justify-content: center;
+            margin-right: 188px;
+        }
+
+        #links a {
+            text-decoration: none;
+            color: black;
+        }
+
+        li {
+            list-style-type: none;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        #login-button {
+            margin-left: 330px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: #A986EF;
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+            box-shadow: 0px 0px 5px #A986EF;
+        }
+
+        #login-button:hover {
+            cursor: pointer;
+            background-color: #9277c7;
+            transition-property: all;
+            transition-duration: 0.5s;
+            transition-timing-function: ease;
+        }
+
+        #member-btn {
+            border-radius: 24px;
+            border: 1px solid #A986EF;
+            width: 240px;
+            background-color: #F5F5F5;
+        }
+
+        #member-btn:hover {
+            cursor: pointer;
+        }
+
+        #member {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            background-color: #F5F5F5;
+            border-radius: 24px;
+        }
+
+        #profile-icon {
+            width: 34px;
+            margin-right: 2px;
+        }
+
+        #member div {
+            margin-left: 10px;
+            margin-right: 100px;
+        }
+
+        #hello {
+            text-align: start;
+            font-weight: 600;
+            font-size: 12px;
+            color: #9C9C9C;
+        }
+
+        #username {
+            font-weight: 600;
+            color: #3F3F3F;
+            font-size: 16px;
+        }
+
+        /* ------------------------------------------------- */
+
+        #main-title {
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            margin-top: 100px;
+            font-weight: 600;
+            color: #3F3F3F;
+            font-size: 22px;
+            margin-bottom: 56px;
+        }
+
+        #information-box {
+            display: flex;
+            justify-content: center;
+        }
+
+        #member-infor {
+            display: block;
+            justify-content: center;
+            align-items: center;
+            padding-top: 35px;
+            padding-left: 40px;
+            padding-right: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #C0C0C0;
+            margin-right: 30px;
+            margin-bottom: 44px;
+        }
+
+        #profile-icon-image {
+            width: 120px;
+            height: 120px;
+            margin-left: 8px;
+        }
+
+        #announcement {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #member-infor-username {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            font-size: 26px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        #user-information {
+            font-size: 16px;
+        }
+
+        #right-icon {
+            width: 18px;
+            margin-left: 60px;
+        }
+
+        #buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 85px;
+        }
+
+        #back-btn {
+            background-color: #F5F5F5;
+            border: 2px solid #A986EF;
+            padding: 7px;
+            padding-left: 28px;
+            padding-right: 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #3F3F3F;
+            margin-right: 16px;
+        }
+
+        #back-btn:hover {
+            cursor: pointer;
+            background-color: rgb(235, 235, 235);
+            transition-property: all;
+            transition-duration: 0.5s;
+            transition-timing-function: ease;
+        }
+
+        #check-btn {
+            background-color: #A986EF;
+            border: 2px solid #A986EF;
+            padding: 7px;
+            padding-left: 28px;
+            padding-right: 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        #check-btn:hover {
+            cursor: pointer;
+            background-color: #9277c7;
+            border: 2px solid #9277c7;
+            transition-property: all;
+            transition-duration: 0.5s;
+            transition-timing-function: ease;
+        }
+
+        #member-information {
+            padding: 26px;
+            border: 1px solid #C0C0C0;
+            border-radius: 26px;
+        }
+
+        #member-information p {
+            color: #A986EF;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        #connection-page {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+
+            padding: 10px;
+            padding-right: 0px;
+            padding-left: 0px;
+            width: 600px;
+            height: 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-left: 0px;
+            margin-bottom: 10px;
+        }
+
+        #connection-page-div {
+            background-color: #F5F5F5;
+            padding: 10px;
+            padding-left: 14px;
+            width: 600px;
+            height: 20px;
+            background-color: #F3F3F3;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding-right: 0;
+        }
+
+        #page-modify {
+            background-color: #A986EF;
+            color: white;
+            font-weight: 500;
+            font-size: 14px;
+            margin-left: 10px;
+            width: 100px;
+            padding: 8px;
+            border-radius: 10px;
+            border: 1px solid #A986EF;
+            margin-bottom: 10px;
+        }
+
+        #page-modify:hover {
+            cursor: pointer;
+            background-color: #9277c7;
+            border: 1px solid #9277c7;
+            transition-property: all;
+            transition-duration: 0.5s;
+            transition-timing-function: ease;
+        }
+
+        .input {
+            padding: 10px;
+            padding-left: 14px;
+            width: 600px;
+            height: 20px;
+            background-color: #F3F3F3;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .select {
+            padding: 10px;
+            padding-left: 14px;
+            width: 624px;
+            height: 40.5px;
+            background-color: #F3F3F3;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        /* --------------------------------- */
+
+        #shadow {
+            background-color: #64646479;
+            width: 100%;
+            height: 100%;
+            padding-bottom: 54px;
+
+            position: absolute;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        #page-choice-box-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            position: absolute;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        #page-choice-box {
+            background-color: white;
+            padding: 26px;
+            border-radius: 20px;
+            margin-bottom: 200px;
+            width: 750px;
+        }
+
+        #page-choice-title {
+            font-size: 20px;
+        }
+
+        #page-choice-description {
+            color: #5C5C5C;
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+
+        #page-choice {
+            background-color: white;
+            padding: 20px;
+            padding-top: 6px;
+            border-radius: 20px;
+            border: 1px solid #CBCBCB;
+            color: #5C5C5C;
+        }
+
+        #preview-profile {
+            width: 50px;
+        }
+
+        #instagram-account {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        #preview-profile {
+            margin-right: 10px;
+        }
+
+        #col {
+            width: 500px;
+            height: 40px;
+        }
+
+        #row {
+            text-align: center;
+        }
+
+        td {
+            border: 1px solid #5C5C5C;
+            border-top: 1px solid #D9D9D9;
+            border-bottom: white;
+            border-left: white;
+            border-right: white;
+        }
+
+        #page-connect-btn {
+            background-color: white;
+            border: 1px solid #A986EF;
+            padding: 8px;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: #A986EF;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+
+        #page-connect-btn:hover {
+            cursor: pointer;
+            color: white;
+            background-color: #A986EF;
+            transition-property: all;
+            transition-duration: 0.5s;
+            transition-timing-function: ease;
+        }
+
+        #page-choice-box-flex {
+            display: flex;
+            align-items: center;
+        }
+
+        #x-icon {
+            width: 17px;
+            height: 17px;
+            margin-left: 588px;
+        }
+
+        #x-icon:hover {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="/static/Logo.png" alt="SocialPing-Logo" id="socialping-logo">
+            <h2 id="title"><a href="">SocialPing.com</a></h2>
+        </div>
+        <div id="links">
+            <li><a href="">SocialPing이란 무엇인가</a></li>
+            <li><a href="">핵심기능</a></li>
+            <li><a href="">특징</a></li>
+            <li><a href="">작동원리</a></li>
+            <li><a href="">게시판</a></li>
+        </div>
+        <button id="member-btn">
+            <div id="member">
+                <img src="/static/profile.png" alt="" id="profile-icon">
+                <div>
+                    <p id="hello">안녕하세요</p>
+                    <p id="username">홍길동 님</p>
+                </div>
+            </div>
+        </button>
+    </header>
+
+    <div id="main-content">
+        <h3 id="main-title">회원정보 수정</h3>
+        <div id="information-box">
+            <div id="member-infor">
+                <img src="/static/profile.png" alt="" id="profile-icon-image">
+                <p id="member-infor-username">홍길동</p>
+                <div id="announcement">
+                    <p id="user-information">회원정보</p>
+                    <img src="/static/right.png" alt="" id="right-icon">
+                </div>
+            </div>
+            <div id="member-information">
+                <p id="connect-page">연결된 페이지</p>
+                <div id="connection-page">
+                    <div id="connection-page-div">Test-test</div>
+                    <button id="page-modify" onclick="modifyAction()">변경하기</button>
+                </div>
+                <p id="email-title">(필수) 이메일</p>
+                <input type="text" name="" id="email-input" class="input">
+                <p id="phone-number">전화번호</p>
+                <input type="text" name="" id="phone-number-input" class="input">
+                <p id="business">업종</p>
+                <select id="business-select" class="select">
+                    <option id="option1">기타</option>
+                    <option id="option2">개발</option>
+                    <option id="option3">UI/UX</option>
+                    <option id="option4">사업가</option>
+                    <option id="option5">마케팅</option>
+                </select>
+            </div>
+        </div>
+        <div id="buttons">
+            <button id="back-btn">뒤로</button>
+            <button id="check-btn">수정</button>
+        </div>
+    </div>
+
+    <div id="shadow"></div>
+
+    <div id="page-choice-box-div">
+        <div id="page-choice-box">
+            <div id="page-choice-box-flex">
+                <h3 id="page-choice-title">인스타그램 페이지</h3>
+                <a onclick="action()"><img src="/static/x.png" alt="" id="x-icon"></a>
+            </div>
+            <p id="page-choice-description">페이스북 페이지와 인스타그램 계정을 socialping과 연결하고 자동화 메시지를 설정해보세요.</p>
+            <div id="page-choice">
+                <table>
+                    <tr>
+                        <th scope="col" id="col">페이지</th>
+                        <th scope="col" id="col">인스타그램 계정</th>
+                        <th scope="col" id="col">서비스 연결</th>
+                    </tr>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let count = 0;
+
+        const body = document.querySelector('body');
+        body.style.overflow = 'hidden';
+        body.style.height = '100%';
+
+        const shadow = document.getElementById('shadow');
+        const tbody = document.querySelector('tbody');
+        for(let i = 0; i < 2; i++) {
+            const tbody = document.querySelector('tbody');
+            const tr = document.createElement('tr');
+            tr.id = 'row';
+            tbody.appendChild(tr);
+
+            const tdPageName = document.createElement('td');
+            tdPageName.id = 'page-name';
+            tdPageName.innerText = 'Test-test';
+            tr.appendChild(tdPageName);
+
+            const td = document.createElement('td');
+            const divInstagramAccount = document.createElement('div');
+            divInstagramAccount.id = 'instagram-account';
+            td.appendChild(divInstagramAccount);
+            tr.appendChild(td);
+
+            const img = document.createElement('img');
+            img.id = 'preview-profile';
+            img.src = 'images/preview-profile.png';
+            const p = document.createElement('p');
+            p.id = 'instagram-username';
+            p.innerText = 'Hong_Gil-dong';
+            divInstagramAccount.appendChild(img);
+            divInstagramAccount.appendChild(p);
+
+            const tdButton = document.createElement('td');
+            const button = document.createElement('button');
+            button.id = 'page-connect-btn';
+            button.innerText = '페이지 연결하기';
+
+            const pageChoiceBoxDiv = document.getElementById('page-choice-box-div');
+            button.addEventListener('click', function() {
+                body.style.overflow = 'visible';
+                body.style.height = '0';
+
+                shadow.style.display = 'none';
+                pageChoiceBoxDiv.style.display = 'none';
+                count = 0;
+            });
+            tdButton.appendChild(button);
+            tr.appendChild(tdButton);
+        }
+
+        function action() {
+            const pageChoiceBoxDiv = document.getElementById('page-choice-box-div');
+            body.style.overflow = 'visible';
+            body.style.height = '0';
+            shadow.style.display = 'none';
+            pageChoiceBoxDiv.style.display = 'none';
+            count = 0;
+        }
+
+        function modifyAction() {
+            const pageChoiceBoxDiv = document.getElementById('page-choice-box-div');
+            if (count === 0) {
+                body.style.overflow = 'hidden';
+                body.style.height = '100%';
+                shadow.style.display = 'block';
+                pageChoiceBoxDiv.style.display = 'flex';
+                count++;
+            } else {
+                body.style.overflow = 'visible';
+                body.style.height = '0';
+                shadow.style.display = 'none';
+                pageChoiceBoxDiv.style.display = 'none';
+                count = 0;
+            }
+        }
+    </script>
+</body>
+</html>
