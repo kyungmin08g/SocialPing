@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialPing - 게시글 작성</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        header {
+            margin-top: 34px;
+            display: flex;
+            height: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        #logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 190px;
+        }
+
+        #logo h2 a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #socialping-logo {
+            width: 34px;
+            height: 34px;
+            margin-right: 10px;
+        }
+
+        #title {
+            font-size: 22px;
+        }
+
+        #links {
+            display: flex;
+            justify-content: center;
+            margin-right: 188px;
+        }
+
+        #links a {
+            text-decoration: none;
+            color: black;
+        }
+
+        li {
+            list-style-type: none;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        #login-button {
+            margin-left: 330px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: #A986EF;
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+            box-shadow: 0px 0px 5px #A986EF;
+        }
+
+        #login-button:hover {
+            cursor: pointer;
+            background-color: #9277c7;
+            transition-property: all;
+            transition-duration: 0.5s;
+            transition-timing-function: ease;
+        }
+
+        #member-btn {
+            border-radius: 24px;
+            border: 1px solid #A986EF;
+            width: 240px;
+            background-color: #F5F5F5;
+        }
+
+        #member-btn:hover {
+            cursor: pointer;
+        }
+
+        #member {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            background-color: #F5F5F5;
+            border-radius: 24px;
+        }
+
+        #profile-icon {
+            width: 34px;
+            margin-right: 2px;
+        }
+
+        #member div {
+            margin-left: 10px;
+            margin-right: 100px;
+        }
+
+        #hello {
+            text-align: start;
+            font-weight: 600;
+            font-size: 12px;
+            color: #9C9C9C;
+        }
+
+        #username {
+            font-weight: 600;
+            color: #3F3F3F;
+            font-size: 16px;
+        }
+
+        /* ------------------------------------------------ */
+
+        #main-content {
+            display: flex;
+            justify-content: center;
+        }
+
+        #content1 {
+            display: block;
+            justify-content: center;
+            align-items: center;
+            max-width: 1150px;
+        }
+
+        #title-input {
+            font-size: 24px;
+            outline: none;
+            border: none;
+            width: 1150px;
+            margin-top: 40px;
+        }
+
+        #br {
+            background-color: #D9D9D9;
+            height: 1px;
+            margin-top: 10px;
+            margin-bottom: 14px;
+        }
+
+        #write-btn {
+            background-color: #A986EF;
+            border: none;
+            padding: 8.5px;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: white;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-left: 1059px;
+            margin-right: 20px;
+            width: 90px;
+            height: 34px;
+            margin-top: 14px;
+            text-align: center;
+        }
+
+        #write-btn:hover {
+            cursor: pointer;
+            background-color: #9277c7;
+            transition-property: all;
+            transition-duration: 0.5s;
+            transition-timing-function: ease;
+        }
+
+        /* ------------------------------------------------ */
+
+        #footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #939393;
+            margin-left: 1130px;
+            margin-top: 180px;
+            margin-bottom: 10px;
+        }
+
+        #footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #939393;
+            margin-left: 860px;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        #copyright {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            color: #939393;
+            margin-right: 20px;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        #questions {
+            color: #939393;
+            font-size: 15px;
+            margin-right: 840px;
+            margin-bottom: 12px;
+        }
+
+        #copyright-title {
+            color: #939393;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        #footer-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="/static/Logo.png" alt="SocialPing-Logo" id="socialping-logo">
+            <h2 id="title"><a href="">SocialPing.com</a></h2>
+        </div>
+        <div id="links">
+            <li><a href="">SocialPing이란 무엇인가</a></li>
+            <li><a href="">핵심기능</a></li>
+            <li><a href="">특징</a></li>
+            <li><a href="">작동원리</a></li>
+            <li><a href="">게시판</a></li>
+        </div>
+        <button id="member-btn">
+            <div id="member">
+                <img src="/static/profile.png" alt="" id="profile-icon">
+                <div>
+                    <p id="hello">안녕하세요</p>
+                    <p id="username">홍길동 님</p>
+                </div>
+            </div>
+        </button>
+    </header>
+
+    <div id="main-content">
+        <div id="content1">
+            <div>
+                <input type="text" id="title-input" placeholder="제목을 입력하세요">
+                <div id="br"></div>
+            </div>
+            <div id="summernote"></div>
+            <button id="write-btn">작성하기</button>
+        </div>
+    </div>
+
+    <footer>
+        <div id="footer-div">
+            <div>
+                <div id="footer-logo">
+                    <img src="/static/Logo.png" alt="SocialPing-Logo" id="socialping-logo">
+                    <h2 id="footer-title">SocialPing.com</h2>
+                </div>
+                <div id="footer-links">
+                    <li>SocialPing이란 무엇인가</li>
+                    <li>핵심기능</li>
+                    <li>특징</li>
+                    <li>작동원리</li>
+                    <li>게시판</li>
+                </div>
+                <div id="copyright">
+                    <p id="questions">문의사항: kyungmin2892@gmail.com</p>
+                    <p id="copyright-title">SocialPing.com © 2025 모든 권리 보유</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        $('#summernote').summernote({
+            placeholder: '내용을 입력하세요',
+            tabsize: 2,
+            height: 800,
+            minHeight: 800,
+            maxHeight: 800,
+            focus: true,
+            lang: "ko-KR",
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']],
+                ['view', ['help']]
+            ]
+        });
+    </script>
+</body>
+</html>
