@@ -1,0 +1,225 @@
+* {
+    margin: 0;
+}
+
+header {
+    margin-top: 34px;
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+#logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 190px;
+}
+
+#logo h2 a {
+    text-decoration: none;
+    color: black;
+}
+
+.socialping-logo {
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
+}
+
+#title {
+    font-size: 22px;
+}
+
+#links {
+    display: flex;
+    justify-content: center;
+    margin-right: 188px;
+}
+
+#links a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style-type: none;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#login-button {
+    margin-left: 330px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #A986EF;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    box-shadow: 0px 0px 5px #A986EF;
+}
+
+#login-button:hover {
+    cursor: pointer;
+    background-color: #9277c7;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+}
+
+#member-btn {
+    border-radius: 24px;
+    border: 1px solid #A986EF;
+    width: 240px;
+    background-color: #F5F5F5;
+}
+
+#member-btn:hover {
+    cursor: pointer;
+}
+
+#member {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background-color: #F5F5F5;
+    border-radius: 24px;
+}
+
+#profile-icon {
+    width: 34px;
+    margin-right: 2px;
+}
+
+#member div {
+    margin-left: 10px;
+    margin-right: 100px;
+}
+
+#hello {
+    text-align: start;
+    font-weight: 600;
+    font-size: 12px;
+    color: #9C9C9C;
+}
+
+#username {
+    font-weight: 600;
+    color: #3F3F3F;
+    font-size: 16px;
+}
+
+/* ------------------------------------------------ */
+
+#main-content {
+    display: flex;
+    justify-content: center;
+}
+
+#content1 {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    max-width: 1150px;
+}
+
+#title-input {
+    font-size: 24px;
+    outline: none;
+    border: none;
+    width: 1150px;
+    margin-top: 40px;
+}
+
+#br {
+    background-color: #D9D9D9;
+    height: 1px;
+    margin-top: 10px;
+    margin-bottom: 14px;
+}
+
+#modify-btn {
+    background-color: #A986EF;
+    border: none;
+    padding: 8.5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-left: 1059px;
+    margin-right: 20px;
+    width: 90px;
+    height: 34px;
+    margin-top: 14px;
+    text-align: center;
+}
+
+#modify-btn:hover {
+    cursor: pointer;
+    background-color: #9277c7;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+}
+
+/* ------------------------------------------------ */
+
+#footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #939393;
+    margin-left: 1130px;
+    margin-top: 180px;
+    margin-bottom: 10px;
+}
+
+#footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #939393;
+    margin-left: 860px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+#copyright {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    color: #939393;
+    margin-right: 20px;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+#questions {
+    color: #939393;
+    font-size: 15px;
+    margin-right: 840px;
+    margin-bottom: 12px;
+}
+
+#copyright-title {
+    color: #939393;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+#footer-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

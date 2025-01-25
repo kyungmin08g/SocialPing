@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialPing - 게시판</title>
+    <link rel="stylesheet" href="/static/css/BulletinBoardPage.css">
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="/static/images/Logo.png" alt="SocialPing-Logo" class="socialping-logo">
+            <h2 id="title"><a href="">SocialPing.com</a></h2>
+        </div>
+        <div id="links">
+            <li><a href="">SocialPing이란 무엇인가</a></li>
+            <li><a href="">핵심기능</a></li>
+            <li><a href="">특징</a></li>
+            <li><a href="">작동원리</a></li>
+            <li><a href="">게시판</a></li>
+        </div>
+        <button id="member-btn">
+            <div id="member">
+                <img src="/static/images/profile.png" alt="" id="profile-icon">
+                <div>
+                    <p id="hello">안녕하세요</p>
+                    <p id="username">홍길동 님</p>
+                </div>
+            </div>
+        </button>
+    </header>
+
+    <div id="content1">
+        <div>
+            <h2 id="content1-title">이 곳은 게시글들이 모여있는 공간입니다.</h2>
+            <p id="content1-description">버그 제보나 사용자의 게시글들을 볼 수 있는 공간</p>
+            <div id="input-div">
+                <button id="write-btn">작성하기</button>
+                <input type="text" name="search" id="search-input" placeholder="찾고 싶은 게시글을 검색하세요.">
+                <a href="" id="search-a"><img src="/static/images/search.png" alt="" id="search-icon"></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="content2">
+        <!-- 첫번째 -->
+        <div class="bulletins">
+            <a class="bulletin-btn">
+                <div class="bulletin">
+                    <img src="/static/images/_.jpeg" alt="" class="image-icon">
+                    <div class="supplementary-explanation">
+                        <p class="date">1월 23일</p>
+                        <h3 class="bulletin-title">인스타그램 메시지 전송시 문제 해결</h3>
+                        <p class="bulletin-description">인스타그램을 운영한다면? 인스타그램...</p>
+                        <div class="br"></div>
+                        <div class="hit">
+                            <img src="/static/images/hit.png" alt="" class="hit-icon">
+                            <p class="hit-number">24</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="bulletin-btn">
+                <div class="bulletin">
+                    <img src="/static/images/yellowlight.jpeg" alt="" class="image-icon">
+                    <div class="supplementary-explanation">
+                        <p class="date">1월 28일</p>
+                        <h3 class="bulletin-title">페이스북 페이지 연결 오류 해결 및 개선</h3>
+                        <p class="bulletin-description">인스타그램을 운영한다면? 인스타그램...</p>
+                        <div class="br"></div>
+                        <div class="hit">
+                            <img src="/static/images/hit.png" alt="" class="hit-icon">
+                            <p class="hit-number">14</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="bulletin-btn">
+                <div class="bulletin">
+                    <img src="/static/images/12.png" alt="" class="image-icon">
+                    <div class="supplementary-explanation">
+                        <p class="date">1월 23일</p>
+                        <h3 class="bulletin-title">인스타그램 메시지 전송시 문제 해결</h3>
+                        <p class="bulletin-description">인스타그램을 운영한다면? 인스타그램...</p>
+                        <div class="br"></div>
+                        <div class="hit">
+                            <img src="/static/images/hit.png" alt="" class="hit-icon">
+                            <p class="hit-number">73</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="bulletin-btn">
+                <div class="bulletin">
+                    <img src="/static/images/11.jpg" alt="" class="image-icon">
+                    <div class="supplementary-explanation">
+                        <p class="date">1월 23일</p>
+                        <h3 class="bulletin-title">인스타그램 메시지 전송시 문제 해결</h3>
+                        <p class="bulletin-description">인스타그램을 운영한다면? 인스타그램...</p>
+                        <div class="br"></div>
+                        <div class="hit">
+                            <img src="/static/images/hit.png" alt="" class="hit-icon">
+                            <p class="hit-number">2</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- 두번째 -->
+        <div class="bulletins">
+            <a class="bulletin-btn">
+                <div class="bulletin">
+                    <img src="/static/images/10.jpeg" alt="" class="image-icon">
+                    <div class="supplementary-explanation">
+                        <p class="date">1월 23일</p>
+                        <h3 class="bulletin-title">인스타그램 메시지 전송시 문제 해결</h3>
+                        <p class="bulletin-description">인스타그램을 운영한다면? 인스타그램...</p>
+                        <div class="br"></div>
+                        <div class="hit">
+                            <img src="/static/images/hit.png" alt="" class="hit-icon">
+                            <p class="hit-number">50</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="bulletin-btn">
+                <div class="bulletin">
+                    <img src="/static/images/An+autumn+song.jpg" alt="" class="image-icon">
+                    <div class="supplementary-explanation">
+                        <p class="date">1월 23일</p>
+                        <h3 class="bulletin-title">인스타그램 메시지 전송시 문제 해결</h3>
+                        <p class="bulletin-description">인스타그램을 운영한다면? 인스타그램...</p>
+                        <div class="br"></div>
+                        <div class="hit">
+                            <img src="/static/images/hit.png" alt="" class="hit-icon">
+                            <p class="hit-number">55</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="bulletin-btn">
+                <div class="bulletin">
+                    <img src="/static/images/high-angle-hard-drive-components.jpg" alt="" class="image-icon">
+                    <div class="supplementary-explanation">
+                        <p class="date">1월 23일</p>
+                        <h3 class="bulletin-title">인스타그램 메시지 전송시 문제 해결</h3>
+                        <p class="bulletin-description">인스타그램을 운영한다면? 인스타그램...</p>
+                        <div class="br"></div>
+                        <div class="hit">
+                            <img src="/static/images/hit.png" alt="" class="hit-icon">
+                            <p class="hit-number">1</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="bulletin-btn">
+                <div class="bulletin">
+                    <img src="/static/images/hq720.jpg" alt="" class="image-icon">
+                    <div class="supplementary-explanation">
+                        <p class="date">1월 23일</p>
+                        <h3 class="bulletin-title">인스타그램 메시지 전송시 문제 해결</h3>
+                        <p class="bulletin-description">인스타그램을 운영한다면? 인스타그램...</p>
+                        <div class="br"></div>
+                        <div class="hit">
+                            <img src="/static/images/hit.png" alt="" class="hit-icon">
+                            <p class="hit-number">32</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div id="page-box">
+        <a href="" id="chevron-icon1-a"><img src="/static/images/chevron.png" alt="" id="chevron-icon1"></a>
+        <div id="page-number">1</div>
+        <a href="" id="chevron-icon2-a"><img src="/static/images/chevron.png" alt="" id="chevron-icon2"></a>
+    </div>
+
+    <footer>
+        <div id="footer-div">
+            <div>
+                <div id="footer-logo">
+                    <img src="/static/images/Logo.png" alt="SocialPing-Logo" class="socialping-logo">
+                    <h2 id="footer-title">SocialPing.com</h2>
+                </div>
+                <div id="footer-links">
+                    <li>SocialPing이란 무엇인가</li>
+                    <li>핵심기능</li>
+                    <li>특징</li>
+                    <li>작동원리</li>
+                    <li>게시판</li>
+                </div>
+                <div id="copyright">
+                    <p id="questions">문의사항: kyungmin2892@gmail.com</p>
+                    <p id="copyright-title">SocialPing.com © 2025 모든 권리 보유</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

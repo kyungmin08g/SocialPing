@@ -1,0 +1,515 @@
+* {
+    margin: 0;
+}
+
+header {
+    margin-top: 34px;
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 190px;
+}
+
+#logo h2 a {
+    text-decoration: none;
+    color: black;
+}
+
+.socialping-logo {
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
+}
+
+#title {
+    font-size: 22px;
+}
+
+#links {
+    display: flex;
+    justify-content: center;
+}
+
+#links a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style-type: none;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#login-button {
+    margin-left: 330px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #A986EF;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    box-shadow: 0px 0px 5px #A986EF;
+}
+
+#login-button:hover {
+    cursor: pointer;
+    background-color: #9277c7;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+}
+
+/* ----------------------------------- */
+
+#content1 {
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+#sub-content1 {
+    margin-right: 22px;
+    margin-top: 80px;
+}
+
+#socialping-logo3 {
+    width: 700px;
+    margin-right: 10px;
+}
+
+#logo2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 355px;
+    margin-bottom: 15px;
+}
+
+#logo2 h2 a {
+    text-decoration: none;
+    color: black;
+}
+
+#socialping-logo2 {
+    width: 33px;
+    height: 33px;
+    margin-right: 10px;
+}
+
+#title2 {
+    font-size: 23px;
+}
+
+#main-title {
+    margin-bottom: 12px;
+    font-size: 40px;
+}
+
+#sub-title {
+    margin-bottom: 40px;
+}
+
+#start-button {
+    padding-left: 42px;
+    padding-right: 42px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #A986EF;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    box-shadow: 0px 0px 5px #A986EF;
+}
+
+#start-button:hover {
+    cursor: pointer;
+    background-color: #9277c7;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+}
+
+/* -------------------------------------- */
+
+#content2-main {
+    margin-top: 180px;
+    display: flex;
+    justify-content: center;
+}
+
+#content2 {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.use-examples {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.example-class {
+    margin-top: 20px;
+    background-color: #F5F5F5;
+    padding: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.use-examples .example-class div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2D2D2D;
+}
+
+.frame {
+    margin-right: 10px;
+    width: 14px;
+    height: 14px;
+    padding-bottom: 2px;
+}
+
+#frist-link {
+    text-align: center;
+    color: #646464;
+}
+
+#frist-link-title {
+    font-size: 24px;
+}
+
+#frist-link p span {
+    color: #A986EF;
+    font-weight: 600;
+}
+
+#description1 {
+    margin-top: 32px;
+}
+
+#description2 {
+    margin-top: 20px;
+}
+
+/* ---------------------------------------- */
+
+#content3 {
+    margin-top: 160px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 200px;
+}
+
+#core {
+    font-size: 24px;
+}
+
+#function {
+    font-size: 28px;
+    color: #A986EF;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+#card-menus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#auto {
+    width: 80px;
+    height: 80px;
+}
+
+#comment {
+    width: 80px;
+    height: 80px;
+}
+
+#keywording {
+    width: 80px;
+    height: 80px;
+}
+
+#card-menus div {
+    background-color: #F5F5F5;
+    padding: 24px;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin-left: 26px;
+    margin-right: 26px;
+    border-radius: 20px;
+}
+
+#description3 {
+    margin-top: 10px;
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #3F3F3F;
+}
+
+#description4 {
+    font-size: 15px;
+    color: #3F3F3F;
+}
+
+#description5 {
+    margin-top: 10px;
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #3F3F3F;
+}
+
+#description6 {
+    font-size: 15px;
+    color: #3F3F3F;
+}
+
+#description7 {
+    margin-top: 10px;
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #3F3F3F;
+}
+
+#description8 {
+    font-size: 15px;
+    color: #3F3F3F;
+}
+
+/* ------------------------------------------- */
+
+#content4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 200px;
+}
+
+#feature-description {
+    margin-right: 206px;
+}
+
+#feature-description span {
+    color: #A986EF;
+    font-weight: 600;
+}
+
+#characteristics {
+    font-size: 28px;
+    color: #A986EF;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#feature-description1 {
+    color: #646464;
+}
+
+#feature-card-view-completion1 {
+    background-color: #A986EF;
+    padding: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+#free {
+    margin-right: 24px;
+}
+
+#description9 {
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+
+#description10 {
+    color: white;
+    font-size: 14px;
+}
+
+#feature-card-view-completion2 {
+    background-color: #F5F5F5;
+    padding: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+#dm {
+    width: 70px;
+    height: 70px;
+    margin-right: 24px;
+}
+
+#description11 {
+    color: #3F3F3F;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+
+#description12 {
+    color: #3F3F3F;
+    font-size: 14px;
+}
+
+/* -------------------------------------- */
+
+#content5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 200px;
+}
+
+#principle-operation {
+    margin-right: 250px;
+}
+
+#operation-principle {
+    color: black;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+#operation-principle span {
+    font-size: 28px;
+    color: #A986EF;
+    font-weight: 600;
+}
+
+#content5-card-view1 {
+    background-color: #F5F5F5;
+    padding: 32px;
+    border-radius: 15px;
+    margin-bottom: 24px;
+}
+
+.emphasis {
+    color: #A986EF;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.shipping-terms {
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #3F3F3F;
+}
+
+.supplementary-explanation {
+    color: #646464;
+    font-size: 15px;
+}
+
+#content5-card-view2 {
+    background-color: #F5F5F5;
+    padding: 32px;
+    border-radius: 15px;
+}
+
+#supplementary-explanation-description {
+    color: #A986EF;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+#various div {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+}
+
+#various p {
+    color: #3F3F3F;
+    font-size: 15px;
+}
+
+#various span {
+    color: #A986EF;
+    font-weight: 600;
+}
+
+#various img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* ------------------------------------ */
+
+#footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #939393;
+    margin-left: 1130px;
+    margin-bottom: 10px;
+}
+
+#footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #939393;
+    margin-left: 860px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+#copyright {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    color: #939393;
+    margin-right: 20px;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+#questions {
+    color: #939393;
+    font-size: 15px;
+    margin-right: 840px;
+    margin-bottom: 12px;
+}
+
+#copyright-title {
+    color: #939393;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+#footer-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
