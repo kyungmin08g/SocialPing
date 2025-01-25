@@ -10,3 +10,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+  thymeleaf:
+    suffix: .html
+    check-template-location: true
+    cache: false
+    mvc:
+      static-path-pattern: /static/**

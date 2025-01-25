@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SocialPing - 회원정보</title>
-    <link rel="stylesheet" href="/static/css/MemberInforPage.css">
+    <link rel="stylesheet" href="/css/MemberInforPage.css">
 </head>
 <body>
     <header>
         <div id="logo">
-            <img src="/static/images/Logo.png" alt="SocialPing-Logo" class="socialping-logo">
+            <img src="/images/Logo.png" alt="SocialPing-Logo" class="socialping-logo">
             <h2 id="title"><a href="">SocialPing.com</a></h2>
         </div>
         <div id="links">
@@ -21,7 +21,7 @@
         </div>
         <button id="member-btn">
             <div id="member">
-                <img src="/static/images/profile.png" alt="" id="profile-icon">
+                <img src="/images/profile.png" alt="" id="profile-icon">
                 <div>
                     <p id="hello">안녕하세요</p>
                     <p id="username">홍길동 님</p>
@@ -34,11 +34,11 @@
         <h3 id="main-title">회원정보 수정</h3>
         <div id="information-box">
             <div id="member-infor">
-                <img src="/static/images/profile.png" alt="" id="profile-icon-image">
+                <img src="/images/profile.png" alt="" id="profile-icon-image">
                 <p id="member-infor-username">홍길동</p>
                 <div id="announcement">
                     <p id="user-information">회원정보</p>
-                    <img src="/static/images/right.png" alt="" id="right-icon">
+                    <img src="/images/right.png" alt="" id="right-icon">
                 </div>
             </div>
             <div id="member-information">
@@ -73,7 +73,7 @@
         <div id="page-choice-box">
             <div id="page-choice-box-flex">
                 <h3 id="page-choice-title">인스타그램 페이지</h3>
-                <a onclick="action()"><img src="/static/images/x.png" alt="" id="x-icon"></a>
+                <a onclick="action()"><img src="/images/x.png" alt="" id="x-icon"></a>
             </div>
             <p id="page-choice-description">페이스북 페이지와 인스타그램 계정을 socialping과 연결하고 자동화 메시지를 설정해보세요.</p>
             <div id="page-choice">
@@ -117,7 +117,7 @@
 
             const img = document.createElement('img');
             img.id = 'preview-profile';
-            img.src = '/static/images/preview-profile.png';
+            img.src = '/images/preview-profile.png';
             const p = document.createElement('p');
             p.id = 'instagram-username';
             p.innerText = 'Hong_Gil-dong';
