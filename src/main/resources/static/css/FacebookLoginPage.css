@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+}
+
+header {
+    margin-top: 34px;
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 190px;
+}
+
+#logo h2 a {
+    text-decoration: none;
+    color: black;
+}
+
+.socialping-logo {
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
+}
+
+#title {
+    font-size: 22px;
+}
+
+#links {
+    display: flex;
+    justify-content: center;
+}
+
+#links a {
+    text-decoration: none;
+    color: black;
+    background-color: #ffffff;
+    color: white;
+}
+
+li {
+    list-style-type: none;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#login-button {
+    margin-left: 330px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #ffffff;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+/* ---------------------------------------- */
+
+#content {
+    margin-top: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#facebook-login-btn {
+    margin-top: 26px;
+    color: white;
+    background-color: #1877F2;
+    border: none;
+    padding: 8px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-radius: 10px;
+    font-size: 15.5px;
+}
+
+#facebook-login-btn div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#facebook-login-btn:hover {
+    cursor: pointer;
+    background-color: #136ee3;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+}
+
+#facebook-logo {
+    width: 32px;
+    height: 32px;
+    margin-right: 20px;
+}
+
+#arrow {
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+}

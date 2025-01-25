@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialPing - 회원가입</title>
+    <link rel="stylesheet" href="/static/css/SignUpPage.css">
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="/static/images/Logo.png" alt="SocialPing-Logo" id="socialping-logo">
+            <h2 id="title"><a href="">SocialPing.com</a></h2>
+        </div>
+        <div id="links">
+            <li><a href="">SocialPing이란 무엇인가</a></li>
+            <li><a href="">핵심기능</a></li>
+            <li><a href="">특징</a></li>
+            <li><a href="">작동원리</a></li>
+            <li><a href="">게시판</a></li>
+        </div>
+        <p id="login-button">로그인</p>
+    </header>
+
+    <div id="content">
+        <div id="signup-box">
+            <h2 id="signup-title">회원가입</h2>
+            <form action="" method="get" id="signup-form">
+                <div>
+                    <p>(필수) 이메일</p>
+                    <input type="email" placeholder="이메일을 입력해주세요." required>
+                </div>
+                <div>
+                    <p>전화번호</p>
+                    <input type="text" placeholder="전화번호를 입력해주세요.">
+                </div>
+                <div>
+                    <p>업종</p>
+                    <select id="options">
+                        <option id="option1">기타</option>
+                        <option id="option2">개발</option>
+                        <option id="option3">UI/UX</option>
+                        <option id="option4">사업가</option>
+                        <option id="option5">마케팅</option>
+                    </select>
+                </div>
+                <div id="signup-btn-box">
+                    <button id="signup-btn">회원가입</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
