@@ -1,11 +1,11 @@
+path: http://localhost:8080
+
 spring:
   application:
       name: SocialPing
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/socialping_db?serverTimezone=Asia/Seoul
-    username: root
-    password: dbserver
+  config:
+    import:
+      - application-private.yml
   jpa:
     show-sql: true
     hibernate:

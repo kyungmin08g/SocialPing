@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SocialPing</title>
-    <link rel="stylesheet" href="/css/HomePage.css">
+    <link rel="stylesheet" href="/css/HomePage.css" type="text/css">
 </head>
 <body>
     <header>
@@ -197,5 +197,13 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const loginButton = document.getElementById('login-button');
+        loginButton.addEventListener('click', function() {
+           console.log('Login Button Click!');
+           window.location.href = '/login';
+        });
+    </script>
 </body>
 </html>
