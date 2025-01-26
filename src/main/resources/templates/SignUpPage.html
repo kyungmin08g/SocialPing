@@ -25,18 +25,18 @@
     <div id="content">
         <div id="signup-box">
             <h2 id="signup-title">회원가입</h2>
-            <form action="" method="get" id="signup-form">
+            <form action="/join" method="post" id="signup-form">
                 <div>
                     <p>(필수) 이메일</p>
-                    <input type="email" placeholder="이메일을 입력해주세요." required>
+                    <input type="email" name="email" placeholder="이메일을 입력해주세요." required>
                 </div>
                 <div>
                     <p>전화번호</p>
-                    <input type="text" placeholder="전화번호를 입력해주세요.">
+                    <input type="text" name="phoneNumber" placeholder="전화번호를 입력해주세요.">
                 </div>
                 <div>
                     <p>업종</p>
-                    <select id="options">
+                    <select id="options" name="business">
                         <option id="option1">기타</option>
                         <option id="option2">개발</option>
                         <option id="option3">UI/UX</option>
@@ -45,10 +45,18 @@
                     </select>
                 </div>
                 <div id="signup-btn-box">
-                    <button id="signup-btn">회원가입</button>
+                    <button id="signup-btn" type="submit">회원가입</button>
                 </div>
             </form>
         </div>
     </div>
+
+    <script>
+        const signupForm = document.getElementById('signup-form');
+        const signupButton = document.getElementById('signup-btn');
+        signupButton.addEventListener('click', function(event) {
+            console.log(signupForm.nodeName);
+        });
+    </script>
 </body>
 </html>

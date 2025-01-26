@@ -1,7 +1,7 @@
 package io.github.socialping.security.service;
 
 import io.github.socialping.security.response.FacebookResponse;
-import io.github.socialping.security.user.oAuth2User;
+import io.github.socialping.security.user.OAuth2FacebookUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -30,6 +30,6 @@ public class OAuth2Service extends DefaultOAuth2UserService {
                 oAuth2User.getAttributes().get("email").toString()
         );
 
-        return new oAuth2User(response);
+        return new OAuth2FacebookUser(response);
     }
 }

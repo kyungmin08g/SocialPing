@@ -9,10 +9,11 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
-public class oAuth2User implements OAuth2User {
+public class OAuth2FacebookUser implements OAuth2User {
 
     private FacebookResponse response;
 
@@ -30,5 +31,5 @@ public class oAuth2User implements OAuth2User {
     }
 
     @Override
-    public String getName() { return response.getName(); }
+    public String getName() { return UUID.randomUUID() + "_" + response.getName(); }
 }

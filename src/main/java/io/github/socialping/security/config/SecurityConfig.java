@@ -1,5 +1,7 @@
-package io.github.socialping.config;
+package io.github.socialping.security.config;
 
+import io.github.socialping.jwt.repository.RefreshTokenRepository;
+import io.github.socialping.security.filter.JwtFilter;
 import io.github.socialping.security.handler.OAuth2LoginFailureHandler;
 import io.github.socialping.security.handler.OAuth2LoginSuccessHandler;
 import io.github.socialping.security.service.OAuth2Service;
@@ -12,25 +14,29 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
 
     private final OAuth2Service oAuth2Service;
     private final OAuth2LoginSuccessHandler successHandler;
     private final OAuth2LoginFailureHandler failureHandler;
+    private final RefreshTokenRepository repository;
 
     @Autowired
     public SecurityConfig(
         OAuth2Service oAuth2Service,
         OAuth2LoginSuccessHandler successHandler,
-        OAuth2LoginFailureHandler failureHandler
+        OAuth2LoginFailureHandler failureHandler,
+        RefreshTokenRepository repository
     ) {
         this.oAuth2Service = oAuth2Service;
         this.successHandler = successHandler;
         this.failureHandler = failureHandler;
+        this.repository = repository;
     }
 
     @Bean
@@ -41,7 +47,7 @@ public class SecurityConfig {
         http.httpBasic(AbstractHttpConfigurer::disable);
 
         http.authorizeHttpRequests((auth) -> {
-           auth.requestMatchers("/", "/login", "/signup", "/css/**", "/images/**").permitAll()
+           auth.requestMatchers("/", "/login", "/signup", "/join", "/css/**", "/images/**").permitAll()
                    .anyRequest().authenticated();
         });
 
@@ -51,6 +57,8 @@ public class SecurityConfig {
            oAuth.successHandler(successHandler);
            oAuth.failureHandler(failureHandler);
         });
+
+        http.addFilterBefore(new JwtFilter(repository), UsernamePasswordAuthenticationFilter.class);
 
         http.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
