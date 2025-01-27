@@ -1,5 +1,6 @@
 package io.github.socialping.security.config;
 
+import io.github.socialping.jwt.provider.JwtProvider;
 import io.github.socialping.jwt.repository.RefreshTokenRepository;
 import io.github.socialping.security.filter.JwtFilter;
 import io.github.socialping.security.handler.OAuth2LoginFailureHandler;
@@ -25,18 +26,21 @@ public class SecurityConfig {
     private final OAuth2LoginSuccessHandler successHandler;
     private final OAuth2LoginFailureHandler failureHandler;
     private final RefreshTokenRepository repository;
+    private final JwtProvider jwtProvider;
 
     @Autowired
     public SecurityConfig(
         OAuth2Service oAuth2Service,
         OAuth2LoginSuccessHandler successHandler,
         OAuth2LoginFailureHandler failureHandler,
-        RefreshTokenRepository repository
+        RefreshTokenRepository repository,
+        JwtProvider jwtProvider
     ) {
         this.oAuth2Service = oAuth2Service;
         this.successHandler = successHandler;
         this.failureHandler = failureHandler;
         this.repository = repository;
+        this.jwtProvider = jwtProvider;
     }
 
     @Bean
@@ -58,7 +62,7 @@ public class SecurityConfig {
            oAuth.failureHandler(failureHandler);
         });
 
-        http.addFilterBefore(new JwtFilter(repository), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(new JwtFilter(jwtProvider, repository), UsernamePasswordAuthenticationFilter.class);
 
         http.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
