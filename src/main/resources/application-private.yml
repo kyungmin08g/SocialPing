@@ -1,0 +1,23 @@
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/socialping_db?serverTimezone=Asia/Seoul
+    username: root
+    password: dbserver
+  jwt:
+    secretKey: bd706b6c592d3778068f412f180ab015e918d07bcb58e123fa9958f8cc56c26f
+    access-token-expire-time: 10
+    refresh-token-expire-time: 30
+
+  security.oauth2.client:
+    registration:
+      facebook:
+        client-name: facebook
+        client-id: 590416196957768
+        client-secret: 45fc1c60fb9c739562da1cab498be177
+        authorization-grant-type: authorization_code
+        redirect-uri: http://localhost:8080/login/oauth2/code/facebook
+        scope:
+          - email
+          - public_profile

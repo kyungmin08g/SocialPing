@@ -67,11 +67,15 @@ li {
 /* ---------------------------------------- */
 
 #content {
-    margin-top: 280px;
+    margin-top: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+#login-title {
+    font-size: 25px;
 }
 
 #facebook-login-btn {
@@ -79,11 +83,11 @@ li {
     color: white;
     background-color: #1877F2;
     border: none;
-    padding: 8px;
-    padding-left: 18px;
-    padding-right: 18px;
+    padding: 6px;
+    padding-left: 16px;
+    padding-right: 16px;
     border-radius: 10px;
-    font-size: 15.5px;
+    font-size: 14.5px;
 }
 
 #facebook-login-btn div {
@@ -101,13 +105,13 @@ li {
 }
 
 #facebook-logo {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     margin-right: 20px;
 }
 
 #arrow {
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
     margin-left: 20px;
 }
