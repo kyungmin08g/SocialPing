@@ -198,12 +198,53 @@
         </div>
     </footer>
 
-    <script>
+    <script th:inline="javascript">
+        const header = document.querySelector('header');
+        const links = document.getElementById('links');
         const loginButton = document.getElementById('login-button');
-        loginButton.addEventListener('click', function() {
-           console.log('Login Button Click!');
-           window.location.href = '/login';
-        });
+
+        let username = [[${username}]];
+        if (username !== "undefined") {
+            const memberButton = document.createElement('button');
+            memberButton.id = 'member-btn';
+
+            const memberDiv = document.createElement('div');
+            memberDiv.id = 'member';
+            memberButton.appendChild(memberDiv)
+
+            const imgTag = document.createElement('img');
+            imgTag.id = 'profile-icon';
+            imgTag.src = '/images/profile.png'
+            imgTag.alt = '';
+            memberDiv.appendChild(imgTag);
+
+            const emptyDiv = document.createElement('div');
+            const helloP = document.createElement('p');
+            helloP.id = 'hello';
+            helloP.textContent = '안녕하세요';
+
+            const usernameP = document.createElement('p');
+            usernameP.id = 'username';
+            usernameP.textContent = `${username} 님`;
+            emptyDiv.appendChild(helloP);
+            emptyDiv.appendChild(usernameP);
+            memberDiv.appendChild(emptyDiv);
+
+            header.appendChild(memberButton);
+            loginButton.style.display = 'none';
+            header.style.marginBottom = '40px'
+            links.style.marginRight = '188px'
+        } else {
+            loginButton.style.display = 'block';
+            header.style.marginBottom = '0'
+            links.style.marginRight = '0'
+
+            loginButton.addEventListener('click', function() {
+                console.log('Login Button Click!');
+                window.location.href = '/login';
+            });
+        }
+
     </script>
 </body>
 </html>

@@ -1,14 +1,14 @@
-
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/socialping_db?serverTimezone=Asia/Seoul
     username: root
     password: dbserver
+
   jwt:
     secretKey: bd706b6c592d3778068f412f180ab015e918d07bcb58e123fa9958f8cc56c26f
-    access-token-expire-time: 10
-    refresh-token-expire-time: 30
+    access-token-expire-time: 604800
+    refresh-token-expire-time: 2628000
 
   security.oauth2.client:
     registration:

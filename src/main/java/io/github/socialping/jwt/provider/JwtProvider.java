@@ -16,20 +16,21 @@ import java.util.Date;
 @Component
 public class JwtProvider {
 
-    @Value("${spring.jwt.secretKey}")
-    public static String secretKey = "bd706b6c592d3778068f412f180ab015e918d07bcb58e123fa9958f8cc56c26f";
+    private final Key secretKey;
+    private final long accessTokenExpireTime;
+    private final long refreshTokenExpireTime;
 
-    @Value("${spring.jwt.access-token-expire-time}")
-    private static long accessTokenExpireTime = 10;
-
-    @Value("${spring.jwt.refresh-token-expire-time}")
-    private static long refreshTokenExpireTime = 30;
-
-    public static Key getDecoderSecretKey() {
-        return Keys.hmacShaKeyFor(Decoders.BASE64.decode(Base64.getEncoder().encodeToString(secretKey.getBytes(StandardCharsets.UTF_8))));
+    public JwtProvider(
+        @Value("${spring.jwt.secretKey}") String secretKey,
+        @Value("${spring.jwt.access-token-expire-time}") String accessTokenExpireTime,
+        @Value("${spring.jwt.refresh-token-expire-time}") String refreshTokenExpireTime
+    ) {
+        this.secretKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(Base64.getEncoder().encodeToString(secretKey.getBytes(StandardCharsets.UTF_8))));
+        this.accessTokenExpireTime = Long.parseLong(accessTokenExpireTime);
+        this.refreshTokenExpireTime = Long.parseLong(refreshTokenExpireTime);
     }
 
-    public static String createAccessToken(String username, String role) {
+    public String createAccessToken(String username, String role) {
         Claims claims = Jwts.claims();
         claims.put("username", username);
         claims.put("role", role);
@@ -41,11 +42,11 @@ public class JwtProvider {
                 .setClaims(claims)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
-                .signWith(getDecoderSecretKey())
+                .signWith(secretKey)
                 .compact();
     }
 
-    public static String createRefreshToken(String username, String role) {
+    public String createRefreshToken(String username, String role) {
         Claims claims = Jwts.claims();
         claims.put("username", username);
         claims.put("role", role);
@@ -57,29 +58,29 @@ public class JwtProvider {
                 .setClaims(claims)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
-                .signWith(getDecoderSecretKey())
+                .signWith(secretKey)
                 .compact();
     }
 
-    public static String getUserName(String token) throws ExpiredJwtException {
+    public String getUserName(String token) {
         try {
-            return Jwts.parserBuilder().setSigningKey(getDecoderSecretKey()).build().parseClaimsJws(token).getBody().get("username", String.class);
+            return Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token).getBody().get("username", String.class);
         } catch (ExpiredJwtException e) {
             return e.getClaims().get("username", String.class);
         }
     }
 
-    public static String getRole(String token) {
+    public String getRole(String token) {
         try {
-            return Jwts.parserBuilder().setSigningKey(getDecoderSecretKey()).build().parseClaimsJws(token).getBody().get("role", String.class);
+            return Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token).getBody().get("role", String.class);
         } catch (ExpiredJwtException e) {
             return e.getClaims().get("role", String.class);
         }
     }
 
-    public static boolean validateToken(String token) {
+    public boolean validateToken(String token) {
         try {
-            Jwts.parserBuilder().setSigningKey(getDecoderSecretKey()).build().parseClaimsJws(token);
+            Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token);
             return true;
         } catch (MalformedJwtException e) {
             log.error("유효하지 않은 JWT 토큰: {}", e.getMessage());

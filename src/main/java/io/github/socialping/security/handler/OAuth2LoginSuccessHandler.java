@@ -25,11 +25,15 @@ import java.util.List;
 @Component
 public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
+    private final JwtProvider jwtProvider;
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final RefreshTokenRepository repository;
 
     @Autowired
-    public OAuth2LoginSuccessHandler(RefreshTokenRepository repository) { this.repository = repository; }
+    public OAuth2LoginSuccessHandler(JwtProvider jwtProvider, RefreshTokenRepository repository) {
+        this.jwtProvider = jwtProvider;
+        this.repository = repository;
+    }
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
@@ -52,8 +56,8 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
     }
 
     private void accessTokenAndRefreshTokenIssue(String name, String authority, HttpServletResponse response) throws IOException {
-        String accessToken = JwtProvider.createAccessToken(name, authority);
-        String refreshToken = JwtProvider.createRefreshToken(name, authority);
+        String accessToken = jwtProvider.createAccessToken(name, authority);
+        String refreshToken = jwtProvider.createRefreshToken(name, authority);
         RefreshTokenEntity refreshTokenEntity = RefreshTokenEntity.builder().name(name).refresh_token(refreshToken).build();
         repository.save(refreshTokenEntity);
 

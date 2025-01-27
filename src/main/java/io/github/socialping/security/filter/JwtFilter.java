@@ -8,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,13 +19,16 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.List;
 
+@Slf4j
 @Component
 public class JwtFilter extends OncePerRequestFilter {
 
+    private final JwtProvider jwtProvider;
     private final RefreshTokenRepository repository;
 
     @Autowired
-    public JwtFilter(RefreshTokenRepository repository) {
+    public JwtFilter(JwtProvider jwtProvider, RefreshTokenRepository repository) {
+        this.jwtProvider = jwtProvider;
         this.repository = repository;
     }
 
@@ -35,23 +39,26 @@ public class JwtFilter extends OncePerRequestFilter {
         for (Cookie cookie : cookies) if (cookie.getName().equals("AT")) accessToken = cookie;
 
         if (accessToken != null) {
-            String name = JwtProvider.getUserName(accessToken.getValue());
-            String role = JwtProvider.getRole(accessToken.getValue());
+            String name = jwtProvider.getUserName(accessToken.getValue());
+            String role = jwtProvider.getRole(accessToken.getValue());
 
             // access token의 유효시간 체크
-            if (JwtProvider.validateToken(accessToken.getValue())) {
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(name, null, List.of(new SimpleGrantedAuthority(role)));
-                SecurityContextHolder.getContext().setAuthentication(authentication);
+            if (jwtProvider.validateToken(accessToken.getValue())) {
+                SecurityContextHolder.getContext().setAuthentication(
+                        new UsernamePasswordAuthenticationToken(name, null, List.of(new SimpleGrantedAuthority(role)))
+                );
             } else {
                 // access token이 없을 경우 refresh token이 있는지 체크
-                RefreshTokenEntity refreshTokenEntity = repository.findById(JwtProvider.getUserName(accessToken.getValue())).orElse(null);
+                RefreshTokenEntity refreshTokenEntity = repository.findById(jwtProvider.getUserName(accessToken.getValue())).orElse(null);
 
                 if (refreshTokenEntity != null) {
                     String refreshToken = refreshTokenEntity.getRefresh_token();
-                    if (JwtProvider.validateToken(refreshToken)) {
+                    if (jwtProvider.validateToken(refreshToken)) {
                         accessTokenIssue(name, role, response);
-                        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(name, null, List.of(new SimpleGrantedAuthority(role)));
-                        SecurityContextHolder.getContext().setAuthentication(authentication);
+                        SecurityContextHolder.getContext().setAuthentication(
+                                new UsernamePasswordAuthenticationToken(name, null, List.of(new SimpleGrantedAuthority(role)))
+                        );
+                        log.info("\u001B[32m엑세스 토큰 다시 발급\u001B[0m");
                     } else {
                         repository.deleteById(refreshTokenEntity.getName());
                         accessToken.setMaxAge(0);
@@ -65,7 +72,7 @@ public class JwtFilter extends OncePerRequestFilter {
     }
 
     private void accessTokenIssue(String name, String role, HttpServletResponse response) {
-        String accessToken = JwtProvider.createAccessToken(name, role);
+        String accessToken = jwtProvider.createAccessToken(name, role);
         Cookie cookie = new Cookie("AT", accessToken);
         cookie.setHttpOnly(true);
         cookie.setPath("/");

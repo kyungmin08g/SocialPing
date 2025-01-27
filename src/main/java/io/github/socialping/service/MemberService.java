@@ -2,7 +2,6 @@ package io.github.socialping.service;
 
 import io.github.socialping.dto.JoinDto;
 import io.github.socialping.dto.MemberDto;
-import io.github.socialping.entity.MemberEntity;
 import io.github.socialping.repository.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,10 +18,11 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public boolean join(SecurityContext context, JoinDto dto) {
+    public void join(SecurityContext context, JoinDto dto) {
         String username = context.getAuthentication().getName();
         String uuid = username.substring(0, username.indexOf("_"));
         String name = username.substring(username.indexOf("_") + 1);
+
         String role = null;
         for (GrantedAuthority authority : context.getAuthentication().getAuthorities()) { role = authority.getAuthority(); }
 
@@ -34,14 +34,11 @@ public class MemberService {
                 .business(dto.getBusiness())
                 .role(role)
                 .build();
-        System.out.println(memberDto.toString());
 
         try {
             memberRepository.save(memberDto.toEntity());
-            return true;
         } catch (Exception e) {
-            log.error("\u001B[31mError: {}\u001B[0m", e.getMessage());
-            return false;
+            log.error("\u001B[31m회원 저장하는 로직에서 예외: {}\u001B[0m", e.getMessage());
         }
     }
 }
