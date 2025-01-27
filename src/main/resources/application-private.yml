@@ -7,8 +7,8 @@ spring:
     password: dbserver
   jwt:
     secretKey: bd706b6c592d3778068f412f180ab015e918d07bcb58e123fa9958f8cc56c26f
-    access-token-expire-time: 1209600
-    refresh-token-expire-time: 2628000
+    access-token-expire-time: 10
+    refresh-token-expire-time: 30
 
   security.oauth2.client:
     registration:

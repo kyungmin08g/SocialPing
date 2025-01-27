@@ -20,10 +20,10 @@ public class JwtProvider {
     public static String secretKey = "bd706b6c592d3778068f412f180ab015e918d07bcb58e123fa9958f8cc56c26f";
 
     @Value("${spring.jwt.access-token-expire-time}")
-    private static long accessTokenExpireTime = 1209600;
+    private static long accessTokenExpireTime = 10;
 
     @Value("${spring.jwt.refresh-token-expire-time}")
-    private static long refreshTokenExpireTime = 2628000;
+    private static long refreshTokenExpireTime = 30;
 
     public static Key getDecoderSecretKey() {
         return Keys.hmacShaKeyFor(Decoders.BASE64.decode(Base64.getEncoder().encodeToString(secretKey.getBytes(StandardCharsets.UTF_8))));
@@ -61,12 +61,20 @@ public class JwtProvider {
                 .compact();
     }
 
-    public static String getUserName(String token) {
-        return Jwts.parserBuilder().setSigningKey(getDecoderSecretKey()).build().parseClaimsJws(token).getBody().get("username", String.class);
+    public static String getUserName(String token) throws ExpiredJwtException {
+        try {
+            return Jwts.parserBuilder().setSigningKey(getDecoderSecretKey()).build().parseClaimsJws(token).getBody().get("username", String.class);
+        } catch (ExpiredJwtException e) {
+            return e.getClaims().get("username", String.class);
+        }
     }
 
     public static String getRole(String token) {
-        return Jwts.parserBuilder().setSigningKey(getDecoderSecretKey()).build().parseClaimsJws(token).getBody().get("role", String.class);
+        try {
+            return Jwts.parserBuilder().setSigningKey(getDecoderSecretKey()).build().parseClaimsJws(token).getBody().get("role", String.class);
+        } catch (ExpiredJwtException e) {
+            return e.getClaims().get("role", String.class);
+        }
     }
 
     public static boolean validateToken(String token) {
