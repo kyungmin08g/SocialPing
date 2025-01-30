@@ -16,10 +16,10 @@ import lombok.*;
 public class MemberEntity {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private String uuid;
 
-    @Column(name = "user_name")
+    @Column(name = "user_name", nullable = false)
     private String username;
 
     @Column(name = "email")
@@ -34,7 +34,7 @@ public class MemberEntity {
     @Column(name = "role")
     private String role;
 
-    @Column(name = "facebook_access_token")
+    @Column(name = "facebook_access_token", nullable = false)
     private String facebook_access_token;
 
 }

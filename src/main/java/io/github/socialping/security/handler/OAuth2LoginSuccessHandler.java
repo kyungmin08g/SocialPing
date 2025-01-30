@@ -41,8 +41,6 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         log.info("\u001B[32mFacebook login success!\u001B[0m");
 
         OAuth2FacebookUser facebookUser = (OAuth2FacebookUser) authentication.getPrincipal();
-        System.out.println(facebookUser.toString());
-
         String principal = objectMapper.writeValueAsString(authentication.getPrincipal());
         JsonNode json = objectMapper.readTree(principal);
         String authority = null;

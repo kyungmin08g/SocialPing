@@ -24,7 +24,7 @@
                 <img src="/images/profile.png" alt="" id="profile-icon">
                 <div>
                     <p id="hello">안녕하세요</p>
-                    <p id="username">홍길동 님</p>
+                    <p id="username" th:text="|${username} 님|"></p>
                 </div>
             </div>
         </button>
@@ -169,7 +169,7 @@
         </div>
     </div>
 
-    <script>
+    <script th:inline="javascript">
         const previewActionBox2P = document.getElementById('preview-action-box2-p');
         const linkInput = document.getElementById('link-input');
         let clickCount = 1;
@@ -430,54 +430,71 @@
             }
         });
 
+        async function pageListModalScreen() {
+            const body = document.querySelector('body');
+            body.style.overflow = 'hidden';
+            body.style.height = '100%';
 
-        const body = document.querySelector('body');
-        body.style.overflow = 'hidden';
-        body.style.height = '100%';
+            await fetch('/instagram/pages', {
+                method: 'GET',
+            }).then(response => response.json()).then(data => {
+                const shadow = document.getElementById('shadow');
+                const tbody = document.querySelector('tbody');
+                data.forEach(page => {
+                    const tr = document.createElement('tr');
+                    tr.id = 'row';
+                    tbody.appendChild(tr);
 
-        const shadow = document.getElementById('shadow');
-        for(let i = 0; i < 2; i++) {
-            const tbody = document.querySelector('tbody');
-            const tr = document.createElement('tr');
-            tr.id = 'row';
-            tbody.appendChild(tr);
+                    const tdPageName = document.createElement('td');
+                    tdPageName.id = 'page-name';
+                    tdPageName.innerText = page.pageName;
+                    tr.appendChild(tdPageName);
 
-            const tdPageName = document.createElement('td');
-            tdPageName.id = 'page-name';
-            tdPageName.innerText = 'Test-test';
-            tr.appendChild(tdPageName);
+                    const td = document.createElement('td');
+                    const divInstagramAccount = document.createElement('div');
+                    divInstagramAccount.id = 'instagram-account';
+                    td.appendChild(divInstagramAccount);
+                    tr.appendChild(td);
 
-            const td = document.createElement('td');
-            const divInstagramAccount = document.createElement('div');
-            divInstagramAccount.id = 'instagram-account';
-            td.appendChild(divInstagramAccount);
-            tr.appendChild(td);
+                    const img = document.createElement('img');
+                    img.id = 'preview-profile';
+                    img.src = '/images/preview-profile.png';
+                    const p = document.createElement('p');
+                    p.id = 'instagram-username';
 
-            const img = document.createElement('img');
-            img.id = 'preview-profile';
-            img.src = '/images/preview-profile.png';
-            const p = document.createElement('p');
-            p.id = 'instagram-username';
-            p.innerText = 'Hong_Gil-dong';
-            divInstagramAccount.appendChild(img);
-            divInstagramAccount.appendChild(p);
+                    instagramUserName(page, p);
 
-            const tdButton = document.createElement('td');
-            const button = document.createElement('button');
-            button.id = 'page-connect-btn';
-            button.innerText = '페이지 연결하기';
+                    divInstagramAccount.appendChild(img);
+                    divInstagramAccount.appendChild(p);
 
-            const pageChoiceBoxDiv = document.getElementById('page-choice-box-div');
-            button.addEventListener('click', function() {
-                body.style.overflow = 'visible';
-                body.style.height = '0';
+                    const tdButton = document.createElement('td');
+                    const button = document.createElement('button');
+                    button.id = 'page-connect-btn';
+                    button.innerText = '페이지 연결하기';
 
-                shadow.style.display = 'none';
-                pageChoiceBoxDiv.style.display = 'none';
+                    const pageChoiceBoxDiv = document.getElementById('page-choice-box-div');
+                    button.addEventListener('click', function() {
+                        body.style.overflow = 'visible';
+                        body.style.height = '0';
+
+                        shadow.style.display = 'none';
+                        pageChoiceBoxDiv.style.display = 'none';
+                    });
+                    tdButton.appendChild(button);
+                    tr.appendChild(tdButton);
+                });
             });
-            tdButton.appendChild(button);
-            tr.appendChild(tdButton);
         }
+
+        async function instagramUserName(page, p) {
+            await fetch(`/facebook/page/business-account/${page.pageId}/${page.pageAccessToken}`, {
+                method: 'GET'
+            }).then(response => response.text()).then(data => {
+                p.innerText = data;
+            });
+        }
+
+        pageListModalScreen();
     </script>
 </body>
 </html>

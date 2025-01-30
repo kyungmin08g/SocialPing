@@ -1,7 +1,6 @@
 package io.github.socialping.service;
 
 import io.github.socialping.dto.JoinDto;
-import io.github.socialping.dto.MemberDto;
 import io.github.socialping.entity.MemberEntity;
 import io.github.socialping.repository.MemberRepository;
 import io.github.socialping.security.user.OAuth2FacebookUser;
@@ -10,8 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -33,7 +30,6 @@ public class MemberService {
                 memberEntity.setPhoneNumber(dto.getPhoneNumber());
                 memberEntity.setBusiness(dto.getBusiness());
                 memberEntity.setRole(role);
-
                 memberRepository.save(memberEntity);
             }
         } catch (Exception e) {
