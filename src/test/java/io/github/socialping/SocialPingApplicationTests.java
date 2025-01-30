@@ -8,6 +8,7 @@ class SocialPingApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }

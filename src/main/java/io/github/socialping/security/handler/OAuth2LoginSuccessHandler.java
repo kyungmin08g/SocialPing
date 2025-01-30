@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.socialping.jwt.entity.RefreshTokenEntity;
 import io.github.socialping.jwt.provider.JwtProvider;
 import io.github.socialping.jwt.repository.RefreshTokenRepository;
+import io.github.socialping.security.user.OAuth2FacebookUser;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -39,26 +40,27 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         log.info("\u001B[32mFacebook login success!\u001B[0m");
 
+        OAuth2FacebookUser facebookUser = (OAuth2FacebookUser) authentication.getPrincipal();
+        System.out.println(facebookUser.toString());
+
         String principal = objectMapper.writeValueAsString(authentication.getPrincipal());
         JsonNode json = objectMapper.readTree(principal);
-        String name = json.get("name").asText();
-
         String authority = null;
         for (JsonNode authorities : json.get("authorities")) {
             authority = authorities.get("authority").asText();
         }
 
         // SecurityContextHolder에 로그인한 유저 정보 저장
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(name, null, List.of(new SimpleGrantedAuthority(authority)));
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(facebookUser, null, List.of(new SimpleGrantedAuthority(authority)));
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 
-        accessTokenAndRefreshTokenIssue(name, authority, response);
+        accessTokenAndRefreshTokenIssue(facebookUser, authority, response);
     }
 
-    private void accessTokenAndRefreshTokenIssue(String name, String authority, HttpServletResponse response) throws IOException {
-        String accessToken = jwtProvider.createAccessToken(name, authority);
-        String refreshToken = jwtProvider.createRefreshToken(name, authority);
-        RefreshTokenEntity refreshTokenEntity = RefreshTokenEntity.builder().name(name).refresh_token(refreshToken).build();
+    private void accessTokenAndRefreshTokenIssue(OAuth2FacebookUser user, String authority, HttpServletResponse response) throws IOException {
+        String accessToken = jwtProvider.createAccessToken(user.getName(), user.getUserId(), authority);
+        String refreshToken = jwtProvider.createRefreshToken(user.getName(), user.getUserId(), authority);
+        RefreshTokenEntity refreshTokenEntity = RefreshTokenEntity.builder().name(user.getName()).refresh_token(refreshToken).build();
         repository.save(refreshTokenEntity);
 
         Cookie cookie = new Cookie("AT", accessToken);

@@ -1,7 +1,9 @@
 package io.github.socialping.controller;
 
+import io.github.socialping.security.user.OAuth2FacebookUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,11 +14,10 @@ public class HomeController {
 
     @GetMapping(value = "/")
     public String home(SecurityContext context, Model model) {
-        String principal = context.getAuthentication().getPrincipal().toString();
-
-        if (!principal.equals("anonymousUser")) {
-            model.addAttribute("userId", principal.substring(0, principal.indexOf("_")));
-            model.addAttribute("username", principal.substring(principal.indexOf("_") + 1));
+        if (!context.getAuthentication().getPrincipal().toString().equals("anonymousUser")) {
+            OAuth2FacebookUser user = (OAuth2FacebookUser) context.getAuthentication().getPrincipal();
+            model.addAttribute("userId", user.getUserId());
+            model.addAttribute("username", user.getName());
         } else model.addAttribute("username", "undefined");
 
         return "HomePage";

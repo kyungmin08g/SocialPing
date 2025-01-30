@@ -19,6 +19,6 @@ public class RefreshTokenEntity {
     @Column(name = "user_name")
     private String name;
 
-    @Column(name = "refresh_token", length = 512)
+    @Column(name = "refresh_token", length = 1024)
     private String refresh_token;
 }
