@@ -3,16 +3,17 @@ package io.github.socialping.security.user;
 import io.github.socialping.security.response.FacebookResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
-import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
+@ToString
 public class OAuth2FacebookUser implements OAuth2User {
 
     private FacebookResponse response;
@@ -31,5 +32,11 @@ public class OAuth2FacebookUser implements OAuth2User {
     }
 
     @Override
-    public String getName() { return UUID.randomUUID() + "_" + response.getName(); }
+    public String getName() {
+        return response.getName();
+    }
+
+    public String getUserId() {
+        return response.getUserId();
+    }
 }

@@ -4,10 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Getter
@@ -15,13 +12,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "member")
+@Setter
 public class MemberEntity {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private String uuid;
 
-    @Column(name = "user_name")
+    @Column(name = "user_name", nullable = false)
     private String username;
 
     @Column(name = "email")
@@ -35,5 +33,8 @@ public class MemberEntity {
 
     @Column(name = "role")
     private String role;
+
+    @Column(name = "facebook_access_token", nullable = false)
+    private String facebook_access_token;
 
 }

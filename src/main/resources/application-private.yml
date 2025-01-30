@@ -14,10 +14,14 @@ spring:
     registration:
       facebook:
         client-name: facebook
-        client-id: 590416196957768
-        client-secret: 45fc1c60fb9c739562da1cab498be177
+        client-id: 628641756180672
+        client-secret: ecd684c3106d9fdee716f88c48dcae68
         authorization-grant-type: authorization_code
         redirect-uri: http://localhost:8080/login/oauth2/code/facebook
         scope:
           - email
           - public_profile
+          - pages_show_list
+          - pages_read_engagement
+          - business_management
+          - instagram_basic

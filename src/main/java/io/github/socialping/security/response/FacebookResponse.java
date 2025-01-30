@@ -14,4 +14,5 @@ public class FacebookResponse {
     public String providerId;
     public String name;
     public String email;
+    public String userId;
 }

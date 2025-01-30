@@ -667,6 +667,10 @@ td {
     border-right: white;
 }
 
+#instagram-username {
+    text-align: start;
+}
+
 #page-connect-btn {
     background-color: white;
     border: 1px solid #A986EF;

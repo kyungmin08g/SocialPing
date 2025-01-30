@@ -30,9 +30,10 @@ public class JwtProvider {
         this.refreshTokenExpireTime = Long.parseLong(refreshTokenExpireTime);
     }
 
-    public String createAccessToken(String username, String role) {
+    public String createAccessToken(String username, String userId, String role) {
         Claims claims = Jwts.claims();
         claims.put("username", username);
+        claims.put("userId", userId);
         claims.put("role", role);
 
         long expiration = accessTokenExpireTime * 1000;
@@ -46,9 +47,10 @@ public class JwtProvider {
                 .compact();
     }
 
-    public String createRefreshToken(String username, String role) {
+    public String createRefreshToken(String username, String userId, String role) {
         Claims claims = Jwts.claims();
         claims.put("username", username);
+        claims.put("userId", userId);
         claims.put("role", role);
 
         long expiration = refreshTokenExpireTime * 1000;
@@ -75,6 +77,14 @@ public class JwtProvider {
             return Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token).getBody().get("role", String.class);
         } catch (ExpiredJwtException e) {
             return e.getClaims().get("role", String.class);
+        }
+    }
+
+    public String getUserId(String token) {
+        try {
+            return Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token).getBody().get("userId", String.class);
+        } catch (ExpiredJwtException e) {
+            return e.getClaims().get("userId", String.class);
         }
     }
 

@@ -51,8 +51,9 @@ public class SecurityConfig {
         http.httpBasic(AbstractHttpConfigurer::disable);
 
         http.authorizeHttpRequests((auth) -> {
-           auth.requestMatchers("/", "/login", "/signup", "/join", "/css/**", "/images/**").permitAll()
-                   .anyRequest().authenticated();
+           auth.requestMatchers(
+                   "/", "/login", "/signup", "/join", "/css/**", "/images/**", "/instagram/**"
+           ).permitAll().anyRequest().authenticated();
         });
 
         http.oauth2Login((oAuth) -> {

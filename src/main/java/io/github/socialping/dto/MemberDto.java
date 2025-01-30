@@ -18,6 +18,7 @@ public class MemberDto {
     private String phoneNumber;
     private String business;
     private String role;
+    private String facebook_access_token;
 
     public MemberEntity toEntity() {
         return MemberEntity.builder()
@@ -27,6 +28,7 @@ public class MemberDto {
                 .phoneNumber(phoneNumber)
                 .business(business)
                 .role(role)
+                .facebook_access_token(facebook_access_token)
                 .build();
     }
 }

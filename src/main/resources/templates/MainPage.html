@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SocialPing - 자동화 설정</title>
     <link rel="stylesheet" href="/css/MainPage.css">
@@ -24,7 +24,7 @@
                 <img src="/images/profile.png" alt="" id="profile-icon">
                 <div>
                     <p id="hello">안녕하세요</p>
-                    <p id="username">홍길동 님</p>
+                    <p id="username" th:text="|${username} 님|"></p>
                 </div>
             </div>
         </button>
@@ -109,7 +109,7 @@
                 <img src="/images/iPhone.png" alt="" id="iphone-icon">
                 <div id="preview-content">
                     <img src="/images/preview-profile.png" alt="" id="preview-profile-icon">
-                    <h2 id="preview-name">길동 | 18살의 사업</h2>
+                    <h2 id="preview-name">길동 | 인스타그램</h2>
                     <p id="preview-username">ckrkyungmin</p>
                     <p id="preview-description1">팔로워 1.3만명 · 게시물 57개</p>
                     <button id="preview-profile-select">프로필 보기</button>
@@ -169,7 +169,7 @@
         </div>
     </div>
 
-    <script>
+    <script th:inline="javascript">
         const previewActionBox2P = document.getElementById('preview-action-box2-p');
         const linkInput = document.getElementById('link-input');
         let clickCount = 1;
@@ -430,54 +430,71 @@
             }
         });
 
+        async function pageListModalScreen() {
+            const body = document.querySelector('body');
+            body.style.overflow = 'hidden';
+            body.style.height = '100%';
 
-        const body = document.querySelector('body');
-        body.style.overflow = 'hidden';
-        body.style.height = '100%';
+            await fetch('/instagram/pages', {
+                method: 'GET',
+            }).then(response => response.json()).then(data => {
+                const shadow = document.getElementById('shadow');
+                const tbody = document.querySelector('tbody');
+                data.forEach(page => {
+                    const tr = document.createElement('tr');
+                    tr.id = 'row';
+                    tbody.appendChild(tr);
 
-        const shadow = document.getElementById('shadow');
-        for(let i = 0; i < 2; i++) {
-            const tbody = document.querySelector('tbody');
-            const tr = document.createElement('tr');
-            tr.id = 'row';
-            tbody.appendChild(tr);
+                    const tdPageName = document.createElement('td');
+                    tdPageName.id = 'page-name';
+                    tdPageName.innerText = page.pageName;
+                    tr.appendChild(tdPageName);
 
-            const tdPageName = document.createElement('td');
-            tdPageName.id = 'page-name';
-            tdPageName.innerText = 'Test-test';
-            tr.appendChild(tdPageName);
+                    const td = document.createElement('td');
+                    const divInstagramAccount = document.createElement('div');
+                    divInstagramAccount.id = 'instagram-account';
+                    td.appendChild(divInstagramAccount);
+                    tr.appendChild(td);
 
-            const td = document.createElement('td');
-            const divInstagramAccount = document.createElement('div');
-            divInstagramAccount.id = 'instagram-account';
-            td.appendChild(divInstagramAccount);
-            tr.appendChild(td);
+                    const img = document.createElement('img');
+                    img.id = 'preview-profile';
+                    img.src = '/images/preview-profile.png';
+                    const p = document.createElement('p');
+                    p.id = 'instagram-username';
 
-            const img = document.createElement('img');
-            img.id = 'preview-profile';
-            img.src = '/static/images/preview-profile.png';
-            const p = document.createElement('p');
-            p.id = 'instagram-username';
-            p.innerText = 'Hong_Gil-dong';
-            divInstagramAccount.appendChild(img);
-            divInstagramAccount.appendChild(p);
+                    instagramUserName(page, p);
 
-            const tdButton = document.createElement('td');
-            const button = document.createElement('button');
-            button.id = 'page-connect-btn';
-            button.innerText = '페이지 연결하기';
+                    divInstagramAccount.appendChild(img);
+                    divInstagramAccount.appendChild(p);
 
-            const pageChoiceBoxDiv = document.getElementById('page-choice-box-div');
-            button.addEventListener('click', function() {
-                body.style.overflow = 'visible';
-                body.style.height = '0';
+                    const tdButton = document.createElement('td');
+                    const button = document.createElement('button');
+                    button.id = 'page-connect-btn';
+                    button.innerText = '페이지 연결하기';
 
-                shadow.style.display = 'none';
-                pageChoiceBoxDiv.style.display = 'none';
+                    const pageChoiceBoxDiv = document.getElementById('page-choice-box-div');
+                    button.addEventListener('click', function() {
+                        body.style.overflow = 'visible';
+                        body.style.height = '0';
+
+                        shadow.style.display = 'none';
+                        pageChoiceBoxDiv.style.display = 'none';
+                    });
+                    tdButton.appendChild(button);
+                    tr.appendChild(tdButton);
+                });
             });
-            tdButton.appendChild(button);
-            tr.appendChild(tdButton);
         }
+
+        async function instagramUserName(page, p) {
+            await fetch(`/facebook/page/business-account/${page.pageId}/${page.pageAccessToken}`, {
+                method: 'GET'
+            }).then(response => response.text()).then(data => {
+                p.innerText = data;
+            });
+        }
+
+        pageListModalScreen();
     </script>
 </body>
 </html>
