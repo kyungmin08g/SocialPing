@@ -8,5 +8,5 @@ import java.util.Map;
 
 public interface FacebookService {
     List<Map<String, String>> getFacebookPages(SecurityContext securityContext) throws JsonProcessingException;
-    String getInstagramUserName(SecurityContext securityContext, String pageId, String pageAccessToken) throws JsonProcessingException;
+    String getInstagramBusinessAccountUserName(SecurityContext securityContext, String pageId, String pageAccessToken) throws JsonProcessingException;
 }
