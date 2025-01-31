@@ -469,9 +469,23 @@
                         if (p.innerText !== "-") {
                             body.style.overflow = 'visible';
                             body.style.height = '0';
-
                             shadow.style.display = 'none';
                             pageChoiceBoxDiv.style.display = 'none';
+<<<<<<< HEAD
+=======
+
+                            fetch('/facebook/page/connection', {
+                                method: 'POST',
+                                headers: { 'content-type': 'application/json' },
+                                body: JSON.stringify({
+                                    pageId : page.pageId,
+                                    pageName : page.pageName,
+                                    instagramUsername : p.textContent
+                                })
+                            }).then(response => {
+                                if (response.status === 201) console.log("성공적으로 페이지와 연결되었습니다.");
+                            }).catch(error => console.log(`페이지 연결 오류: ${error}`));
+>>>>>>> develop
                         } else alert("인스타그램 비즈니스 계정이 아닙니다.");
                     });
                     tdButton.appendChild(button);
@@ -496,9 +510,8 @@
                     p.style.marginTop = '15px';
                     p.style.marginBottom = '15px';
                     divInstagramAccount.appendChild(p);
-                    console.log("들어옴");
                 }
-            });
+            }).catch(error => console.log(`인스타그램 유저 이름을 가져오는 중에 문제가 발생했습니다: ${error}`));
         }
 
         pageListModalScreen();

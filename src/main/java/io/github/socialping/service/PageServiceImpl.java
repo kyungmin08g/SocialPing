@@ -3,7 +3,10 @@ package io.github.socialping.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.socialping.dto.FacebookPageDto;
+import io.github.socialping.entity.FacebookPage;
 import io.github.socialping.entity.MemberEntity;
+import io.github.socialping.repository.FacebookPageRepository;
 import io.github.socialping.repository.MemberRepository;
 import io.github.socialping.security.user.OAuth2FacebookUser;
 import lombok.AllArgsConstructor;
@@ -20,6 +23,7 @@ public class PageServiceImpl implements FacebookService {
     private final MemberRepository memberRepository;
     private final ObjectMapper objectMapper;
     private final WebClient.Builder webClientBuilder = WebClient.builder();
+    private final FacebookPageRepository pageRepository;
 
     @Override
     public List<Map<String, String>> getFacebookPages(SecurityContext securityContext) throws JsonProcessingException {
@@ -81,4 +85,17 @@ public class PageServiceImpl implements FacebookService {
 
         return null;
     }
+
+    @Override
+    public void setFacebookPageConnect(SecurityContext securityContext, FacebookPageDto dto) {
+        OAuth2FacebookUser user = (OAuth2FacebookUser) securityContext.getAuthentication().getPrincipal();
+        Optional<MemberEntity> member = memberRepository.findById(user.getUserId());
+
+        if (member.isPresent()) {
+            FacebookPage page = dto.toEntity();
+            page.setMemberId(member.get()); // 연관관계 설정
+            pageRepository.save(page);
+        }
+    }
+
 }

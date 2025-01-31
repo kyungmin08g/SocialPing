@@ -1,6 +1,7 @@
 package io.github.socialping.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import io.github.socialping.dto.FacebookPageDto;
 import io.github.socialping.security.user.OAuth2FacebookUser;
 import io.github.socialping.service.PageServiceImpl;
 import lombok.AllArgsConstructor;
@@ -8,9 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -49,6 +48,13 @@ public class PageController {
     ) throws JsonProcessingException {
         String instagramAccountId = pageService.getInstagramBusinessAccountUserName(securityContext, pageId, pageToken);
         return ResponseEntity.status(201).body(instagramAccountId);
+    }
+
+    @PostMapping(value = "/facebook/page/connection")
+    @ResponseBody
+    public ResponseEntity<?> pageConnect(SecurityContext securityContext, @RequestBody FacebookPageDto pageDto) {
+        pageService.setFacebookPageConnect(securityContext, pageDto);
+        return ResponseEntity.status(201).build();
     }
 
 }
