@@ -34,7 +34,9 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         Cookie accessToken = null;
         Cookie[] cookies = request.getCookies();
-        for (Cookie cookie : cookies) if (cookie.getName().equals("AT")) accessToken = cookie;
+        if (cookies != null) {
+            for (Cookie cookie : cookies) if (cookie.getName().equals("AT")) accessToken = cookie;
+        }
 
         if (accessToken != null) {
             String name = jwtProvider.getUserName(accessToken.getValue());

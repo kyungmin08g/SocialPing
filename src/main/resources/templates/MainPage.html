@@ -160,7 +160,7 @@
                 <table>
                     <tr>
                         <th scope="col" class="col">페이지</th>
-                        <th scope="col" class="col">인스타그램 계정</th>
+                        <th scope="col" class="col">비즈니스 계정</th>
                         <th scope="col" class="col">서비스 연결</th>
                     </tr>
                     <tbody></tbody>
@@ -456,29 +456,23 @@
                     td.appendChild(divInstagramAccount);
                     tr.appendChild(td);
 
-                    const img = document.createElement('img');
-                    img.id = 'preview-profile';
-                    img.src = '/images/preview-profile.png';
-                    const p = document.createElement('p');
-                    p.id = 'instagram-username';
-
-                    instagramUserName(page, p);
-
-                    divInstagramAccount.appendChild(img);
-                    divInstagramAccount.appendChild(p);
-
                     const tdButton = document.createElement('td');
                     const button = document.createElement('button');
                     button.id = 'page-connect-btn';
                     button.innerText = '페이지 연결하기';
 
+                    const p = document.createElement('p');
+                    instagramUserName(page, divInstagramAccount, p)
+
                     const pageChoiceBoxDiv = document.getElementById('page-choice-box-div');
                     button.addEventListener('click', function() {
-                        body.style.overflow = 'visible';
-                        body.style.height = '0';
+                        if (p.innerText !== "-") {
+                            body.style.overflow = 'visible';
+                            body.style.height = '0';
 
-                        shadow.style.display = 'none';
-                        pageChoiceBoxDiv.style.display = 'none';
+                            shadow.style.display = 'none';
+                            pageChoiceBoxDiv.style.display = 'none';
+                        } else alert("인스타그램 비즈니스 계정이 아닙니다.");
                     });
                     tdButton.appendChild(button);
                     tr.appendChild(tdButton);
@@ -486,11 +480,24 @@
             });
         }
 
-        async function instagramUserName(page, p) {
-            await fetch(`/facebook/page/business-account/${page.pageId}/${page.pageAccessToken}`, {
+        function instagramUserName(page, divInstagramAccount, p) {
+            fetch(`/facebook/page/business-account/${page.pageId}/${page.pageAccessToken}`, {
                 method: 'GET'
             }).then(response => response.text()).then(data => {
+                p.id = 'instagram-username';
                 p.innerText = data;
+                if (data !== '-') {
+                    const img = document.createElement('img');
+                    img.id = 'preview-profile';
+                    img.src = '/images/preview-profile.png';
+                    divInstagramAccount.appendChild(img);
+                    divInstagramAccount.appendChild(p);
+                } else {
+                    p.style.marginTop = '15px';
+                    p.style.marginBottom = '15px';
+                    divInstagramAccount.appendChild(p);
+                    console.log("들어옴");
+                }
             });
         }
 

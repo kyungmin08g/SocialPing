@@ -600,7 +600,6 @@ li {
     top: 52%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* display: none; */
 }
 
 #page-choice-box {
@@ -665,6 +664,10 @@ td {
     border-bottom: white;
     border-left: white;
     border-right: white;
+}
+
+#preview-profile {
+    text-align: start;
 }
 
 #instagram-username {

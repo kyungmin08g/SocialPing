@@ -42,8 +42,12 @@ public class PageController {
 
     @GetMapping(value = "/facebook/page/business-account/{id}/{token}")
     @ResponseBody
-    public ResponseEntity<String> instagramAccountId(SecurityContext securityContext, @PathVariable("id") String pageId, @PathVariable("token") String pageToken) throws JsonProcessingException {
-        String instagramAccountId = pageService.getInstagramUserName(securityContext, pageId, pageToken);
+    public ResponseEntity<String> instagramAccountId(
+            SecurityContext securityContext,
+            @PathVariable("id") String pageId,
+            @PathVariable("token") String pageToken
+    ) throws JsonProcessingException {
+        String instagramAccountId = pageService.getInstagramBusinessAccountUserName(securityContext, pageId, pageToken);
         return ResponseEntity.status(201).body(instagramAccountId);
     }
 
