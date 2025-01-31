@@ -9,6 +9,7 @@ import io.github.socialping.entity.MemberEntity;
 import io.github.socialping.repository.FacebookPageRepository;
 import io.github.socialping.repository.MemberRepository;
 import io.github.socialping.security.user.OAuth2FacebookUser;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Service;
@@ -86,6 +87,7 @@ public class PageServiceImpl implements FacebookService {
         return null;
     }
 
+    @Transactional(rollbackOn = Exception.class)
     @Override
     public void setFacebookPageConnect(SecurityContext securityContext, FacebookPageDto dto) {
         OAuth2FacebookUser user = (OAuth2FacebookUser) securityContext.getAuthentication().getPrincipal();

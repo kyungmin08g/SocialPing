@@ -170,6 +170,14 @@
     </div>
 
     <script th:inline="javascript">
+        let isFollowsSelect = '설정안함';
+        let isKeywordSelect = '설정안함';
+        let keywordMessage = null;
+        let isCommentsSelect = '설정안함';
+        let isSendsSelect = 'DM';
+        let sendsSelectMessage = null;
+        let sendsSelectButtons = [];
+
         const previewActionBox2P = document.getElementById('preview-action-box2-p');
         const linkInput = document.getElementById('link-input');
         let clickCount = 1;
@@ -185,11 +193,32 @@
         const messagess = document.getElementById('messages1');
         messagess.addEventListener('blur', () => {
             btn2.innerText = messagess.value;
+
+            let isDuplication = false;
+            sendsSelectButtons.forEach(j => {
+                if (j.number === messagess.id.substring(8)) {
+                    j.number = messagess.id.substring(8);
+                    j.message = btn2.textContent;
+                    isDuplication = true;
+                }
+            });
+
+            if (!isDuplication) {
+                let btnMessageObject = {
+                    number: messagess.id.substring(8),
+                    message: btn2.textContent
+                };
+                sendsSelectButtons.push(btnMessageObject);
+            }
+
+            console.log(sendsSelectButtons);
         });
 
         const message = document.getElementById('message');
         message.addEventListener('blur', () => {
             previewActionBox2P.innerText = message.value;
+            sendsSelectMessage = message.value;
+            console.log(`메시지: ${sendsSelectMessage}`);
         });
 
         btn2.addEventListener('click', () => {
@@ -238,10 +267,27 @@
             btns.appendChild(br);
 
             const messagess = document.getElementById(`messages${clickCount}`);
-            messagess.addEventListener('blur', (event) => {
-                for(let i = 0; i < clickCount; i++) {
-                    btn2.innerText = messagess.value;
+            messagess.addEventListener('blur', () => {
+                btn2.innerText = messagess.value;
+
+                let isDuplication = false;
+                sendsSelectButtons.forEach(j => {
+                    if (j.number === messagess.id.substring(8)) {
+                        j.number = messagess.id.substring(8);
+                        j.message = btn2.textContent;
+                        isDuplication = true;
+                    }
+                });
+
+                if (!isDuplication) {
+                    let btnMessageObject = {
+                        number: messagess.id.substring(8),
+                        message: btn2.textContent
+                    };
+                    sendsSelectButtons.push(btnMessageObject);
                 }
+
+                console.log(sendsSelectButtons);
             });
 
             btn2.addEventListener('click', () => {
@@ -273,6 +319,9 @@
                     break;
                 }
             }
+
+            isFollowsSelect = selectValue;
+            console.log(isFollowsSelect);
         });
 
         keywordSelect.addEventListener('change', () => {
@@ -287,9 +336,20 @@
                 }
                 case '설정함': {
                     filteringKeywordTextArea.style.pointerEvents = 'auto';
+                    filteringKeywordTextArea.addEventListener('blur', function() {
+                        let keywords = filteringKeywordTextArea.value.split(",");
+                        let set = new Set();
+                        for (let i = 0; i < keywords.length; i++) { set.add(keywords[i].trim()); }
+                        keywordMessage = set;
+                        console.log(keywordMessage);
+                    });
+
                     break;
                 }
             }
+
+            isKeywordSelect = selectValue;
+            console.log(isKeywordSelect);
         });
 
         commentsSelect.addEventListener('change', () => {
@@ -310,6 +370,9 @@
                     break;
                 }
             }
+
+            isCommentsSelect = selectValue;
+            console.log(isCommentsSelect);
         });
 
 
@@ -359,11 +422,32 @@
                     const messagess = document.getElementById('messages1');
                     messagess.addEventListener('blur', () => {
                         btn2.innerText = messagess.value;
+
+                        let isDuplication = false;
+                        sendsSelectButtons.forEach(j => {
+                            if (j.number === messagess.id.substring(8)) {
+                                j.number = messagess.id.substring(8);
+                                j.message = btn2.textContent;
+                                isDuplication = true;
+                            }
+                        });
+
+                        if (!isDuplication) {
+                            let btnMessageObject = {
+                                number: messagess.id.substring(8),
+                                message: btn2.textContent
+                            };
+                            sendsSelectButtons.push(btnMessageObject);
+                        }
+
+                        console.log(sendsSelectButtons);
                     });
 
                     const message = document.getElementById('message');
                     message.addEventListener('blur', () => {
                         previewActionBox2P.innerText = message.value;
+                        sendsSelectMessage = message.value;
+                        console.log(`메시지: ${sendsSelectMessage}`);
                     });
 
                     const addBtn = document.getElementById('add-btn');
@@ -408,10 +492,27 @@
                         btns.appendChild(br);
 
                         const messagess = document.getElementById(`messages${clickCount}`);
-                        messagess.addEventListener('blur', (event) => {
-                            for(let i = 0; i < clickCount; i++) {
-                                btn2.innerText = messagess.value;
+                        messagess.addEventListener('blur', () => {
+                            btn2.innerText = messagess.value;
+
+                            let isDuplication = false;
+                            sendsSelectButtons.forEach(j => {
+                                if (j.number === messagess.id.substring(8)) {
+                                    j.number = messagess.id.substring(8);
+                                    j.message = btn2.textContent;
+                                    isDuplication = true;
+                                }
+                            });
+
+                            if (!isDuplication) {
+                                let btnMessageObject = {
+                                    number: messagess.id.substring(8),
+                                    message: btn2.textContent
+                                };
+                                sendsSelectButtons.push(btnMessageObject);
                             }
+
+                            console.log(sendsSelectButtons);
                         });
 
                         btn2.addEventListener('click', () => {
@@ -425,9 +526,32 @@
                     messageReady.innerHTML = `<p id="message-text">메시지</p>
                             <textarea name="message" id="message"></textarea><br>
                         `;
+
+                    const message = document.getElementById('message');
+                    message.addEventListener('blur', () => {
+                        previewActionBox2P.innerText = message.value;
+                        sendsSelectMessage = message.value;
+                        console.log(`메시지: ${sendsSelectMessage}`);
+                    });
+
                     break;
                 }
             }
+
+            isSendsSelect = selectValue;
+            console.log(isSendsSelect);
+        });
+
+        // 저장 버튼 클릭시
+        const saveButton = document.getElementById('save-btn');
+        saveButton.addEventListener('click', function() {
+            console.log(isFollowsSelect);
+            if (isKeywordSelect === '설정함') console.log(keywordMessage); else console.log(`${isKeywordSelect}`);
+            console.log(isCommentsSelect);
+            if (isSendsSelect === 'DM') {
+                console.log(`전송될 메시지: ${sendsSelectMessage}`);
+                console.log(sendsSelectButtons);
+            } else console.log(`전송될 메시지: ${sendsSelectMessage}`);
         });
 
         async function pageListModalScreen() {
