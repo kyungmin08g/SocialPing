@@ -5,6 +5,7 @@ import io.github.socialping.dto.FacebookPageDto;
 import io.github.socialping.security.user.OAuth2FacebookUser;
 import io.github.socialping.service.PageServiceImpl;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Controller;
@@ -15,10 +16,18 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@AllArgsConstructor
 public class PageController {
 
     private final PageServiceImpl pageService;
+    private final String verifyToken;
+
+    public PageController(
+            PageServiceImpl pageService,
+            @Value("${spring.webhooks.verify_token}") String verifyToken
+    ) {
+        this.pageService = pageService;
+        this.verifyToken = verifyToken;
+    }
 
     @GetMapping(value = "/instagram/accounts")
     public String instagramAccount(SecurityContext context, Model model) {
@@ -55,6 +64,27 @@ public class PageController {
     public ResponseEntity<?> pageConnect(SecurityContext securityContext, @RequestBody FacebookPageDto pageDto) {
         pageService.setFacebookPageConnect(securityContext, pageDto);
         return ResponseEntity.status(201).build();
+    }
+
+    @GetMapping(value = "/webhook/connect")
+    @ResponseBody
+    public ResponseEntity<?> webhookConnect(SecurityContext securityContext) throws JsonProcessingException {
+        pageService.webhookSetting(securityContext);
+        return ResponseEntity.status(200).build();
+    }
+
+    @GetMapping(value = "/webhook")
+    @ResponseBody
+    public ResponseEntity<?> webhookCheck(
+            @RequestParam("hub.mode") String mode,
+            @RequestParam("hub.verify_token") String verifyToken,
+            @RequestParam("hub.challenge") String challenge
+    ) {
+        System.out.println("webhookCheck에 들어옴");
+        if ("subscribe".equals(mode) && verifyToken.equals(this.verifyToken)) {
+            System.out.println("mode: " + mode + ", verifyToken: " + verifyToken + ", challenge: " + challenge);
+            return ResponseEntity.status(200).body(challenge);
+        } else return ResponseEntity.status(400).build();
     }
 
 }

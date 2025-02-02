@@ -27,7 +27,7 @@ out/
 !**/src/test/**/out/
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
-src/main/java/resources/application-private.yml
+application-private.yml
 
 ### NetBeans ###
 /nbproject/private/

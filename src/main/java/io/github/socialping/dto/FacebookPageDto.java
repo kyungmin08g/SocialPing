@@ -11,9 +11,11 @@ import lombok.ToString;
 public class FacebookPageDto {
     private String pageId;
     private String pageName;
+    private String instagramId;
     private String instagramUsername;
+    private String pageAccessToken;
 
     public FacebookPage toEntity() {
-        return new FacebookPage(pageId, null, pageName, instagramUsername);
+        return new FacebookPage(pageId, null, pageName, instagramId, instagramUsername, pageAccessToken);
     }
 }

@@ -552,6 +552,10 @@
                 console.log(`전송될 메시지: ${sendsSelectMessage}`);
                 console.log(sendsSelectButtons);
             } else console.log(`전송될 메시지: ${sendsSelectMessage}`);
+
+            fetch('/webhook/connect', { method: 'GET', })
+            .then(response => console.log(`성공: ${response}`))
+            .catch(error => console.log(`오류: ${error}`))
         });
 
         async function pageListModalScreen() {
@@ -586,7 +590,9 @@
                     button.innerText = '페이지 연결하기';
 
                     const p = document.createElement('p');
-                    instagramUserName(page, divInstagramAccount, p)
+                    const nonePTag = document.createElement('p');
+                    nonePTag.style.display = 'none';
+                    instagramUserName(page, divInstagramAccount, p, nonePTag)
 
                     const pageChoiceBoxDiv = document.getElementById('page-choice-box-div');
                     button.addEventListener('click', function() {
@@ -602,7 +608,9 @@
                                 body: JSON.stringify({
                                     pageId : page.pageId,
                                     pageName : page.pageName,
-                                    instagramUsername : p.textContent
+                                    instagramId : nonePTag.textContent,
+                                    instagramUsername : p.textContent,
+                                    pageAccessToken: page.pageAccessToken
                                 })
                             }).then(response => {
                                 if (response.status === 201) console.log("성공적으로 페이지와 연결되었습니다.");
@@ -615,13 +623,16 @@
             });
         }
 
-        function instagramUserName(page, divInstagramAccount, p) {
+        function instagramUserName(page, divInstagramAccount, p, p2) {
             fetch(`/facebook/page/business-account/${page.pageId}/${page.pageAccessToken}`, {
                 method: 'GET'
             }).then(response => response.text()).then(data => {
                 p.id = 'instagram-username';
                 p.innerText = data;
+                p2.innerText = "-";
                 if (data !== '-') {
+                    p.innerText = data.split("_")[1];
+                    p2.innerText = data.split("_")[0];
                     const img = document.createElement('img');
                     img.id = 'preview-profile';
                     img.src = '/images/preview-profile.png';

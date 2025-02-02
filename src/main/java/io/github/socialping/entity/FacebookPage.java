@@ -23,7 +23,13 @@ public class FacebookPage {
     @Column(name = "page_name")
     private String pageName;
 
+    @Column(name = "instagram_id")
+    private String instagramId;
+
     @Column(name = "instagram_user_name")
     private String instagramUsername;
+
+    @Column(name = "page_access_token")
+    private String pageAccessToken;
 
 }
