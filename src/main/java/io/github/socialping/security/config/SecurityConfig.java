@@ -54,6 +54,7 @@ public class SecurityConfig {
            auth.requestMatchers(
                    "/", "/login", "/signup", "/join", "/webhook", "/css/**", "/images/**", "/instagram/**", "https://aa3e-1-236-198-90.ngrok-free.app/login/oauth2/code/facebook/**"
            ).permitAll().anyRequest().authenticated();
+
         });
 
         http.oauth2Login((oAuth) -> {
